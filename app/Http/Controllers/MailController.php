@@ -25,8 +25,8 @@ class MailController extends Controller
     	];
 
     	Mail::send('mails.mailsend', $data, function($message) use ($data) {
-    		$message->from('hernachaparro@gmail.com', 'laravel');
-    		$message->to($data['email']);
+    		$message->from($data['email'], 'Fashion Caacupe');
+    		$message->to('techcirclepy@gmail.com');
     		$message->subject($data['subject']);
     	});
     	session()->flash('notif', 'Mensaje enviado correctamente');

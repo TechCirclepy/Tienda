@@ -20,7 +20,7 @@ use Illuminate\Support\Colletion;
 class CargaProductoController extends Controller
 {
     public function __construct(){
-
+        
     }
 
     public function index(Request $request) {

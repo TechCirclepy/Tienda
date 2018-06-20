@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,6 +25,8 @@ Route::resource('tienda/detalle','CatDetalleController');
 Route::resource('tienda/ciudad','CiudadController');
 Route::resource('tienda/estadisticas','EstadisticaController');
 Route::resource('tienda/mensaje','MensajeController');
+//
+Route::resource('comprar', 'CompraProductoController');
 
 Auth::routes();
 

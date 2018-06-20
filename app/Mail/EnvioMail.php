@@ -29,7 +29,7 @@ class EnvioMail extends Mailable
      */
     public function build()
     {
-        return $this->from('hernachaparro@gmail.com')
+        return $this->from('techcirclepy@gmail.com')
                     ->view('mails.envio_mail')
                     ->text('mails.demo_plain')
                     ->with(
