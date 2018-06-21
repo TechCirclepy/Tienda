@@ -34,7 +34,7 @@
 						@endif
 					</td>
 					<td>
-						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="img-responsive" height="200px" alt="" />
+						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="img-responsive" height="50px" alt="" style="width: 50px; height: 50px;" />
 					</td>
 					<th>-> {{$producto->categoria}}<br />
 						-> {{$producto->subcategoria}}<br />

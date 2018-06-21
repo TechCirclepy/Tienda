@@ -15,11 +15,13 @@ class MailController extends Controller
     	$request->validate([
     			'email' => 'required',
     			'subject' => 'required',
+                'celular',
     			'message' => 'required'
     		]);
     	$data = [
     		'email'=>$request->email,
     		'subject'=>$request->subject,
+            'celular'=>$request->celular,
     		'bodyMessage'=>$request->message,
 
     	];
@@ -27,6 +29,7 @@ class MailController extends Controller
     	Mail::send('mails.mailsend', $data, function($message) use ($data) {
     		$message->from($data['email'], 'Fashion Caacupe');
     		$message->to('techcirclepy@gmail.com');
+            $message->priority($data['celular']);
     		$message->subject($data['subject']);
     	});
     	session()->flash('notif', 'Mensaje enviado correctamente');
