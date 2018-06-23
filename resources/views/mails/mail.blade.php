@@ -8,9 +8,16 @@
             <legend class="text-center">Contactanos</legend>
             <!-- Name input-->
             <div class="form-group">
-              <label class="col-md-3 control-label" for="email">Email</label>
+              <label class="col-md-3 control-label" for="name">Nombre y Apellido</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Email" class="form-control" required>
+                <input id="nombre" name="nombre" type="text" placeholder="Nombre y Apellido" class="form-control" required>
+              </div>
+            </div>
+            <!-- Name input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Email  (Opcional)</label>
+              <div class="col-md-9">
+                <input id="email" name="email" type="text" placeholder="Email" class="form-control">
               </div>
             </div>
     
@@ -22,9 +29,9 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-3 control-label" for="celular">Celular (Opcional)</label>
+              <label class="col-md-3 control-label" for="celular">Celular</label>
               <div class="col-md-9">
-                <input id="celular" name="celular" type="number" placeholder="celular" class="form-control">
+                <input id="celular" name="celular" type="number" placeholder="celular" class="form-control" required>
               </div>
             </div>
     
