@@ -1,5 +1,15 @@
 @extends('layouts.user')
 @section('principal')
+<div class="container">
+  @if(session()->has('notif'))
+  <div class="row">
+    <div class="alert alert-success">
+      <button class="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>Notificacion</strong>{{session()->get('notif')}}
+    </div>
+  </div>
+  @endif
+</div>
 	<div class="row">
       <div class="col-md-12">
           <form class="form-horizontal" action="/postmail" method="post">
@@ -15,9 +25,9 @@
             </div>
             <!-- Name input-->
             <div class="form-group">
-              <label class="col-md-3 control-label" for="email">Email  (Opcional)</label>
+              <label class="col-md-3 control-label" for="email">Email</label>
               <div class="col-md-9">
-                <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                <input id="email" name="email" type="text" placeholder="Email" class="form-control" required>
               </div>
             </div>
     
@@ -53,14 +63,4 @@
           </form>
         </div>
 	</div>
-<div class="container">
-  @if(session()->has('notif'))
-  <div class="row">
-    <div class="alert alert-success">
-      <button class="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <strong>Notificacion</strong>{{session()->get('notif')}}
-    </div>
-  </div>
-  @endif
-</div>
 @endsection
