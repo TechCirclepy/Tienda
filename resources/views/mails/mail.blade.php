@@ -24,7 +24,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="celular">Celular (Opcional)</label>
               <div class="col-md-9">
-                <input id="celular" name="celular" type="number" placeholder="celular" class="form-control">
+                <input id="celular" name="celular" type="number" placeholder="celular" class="form-control" required>
               </div>
             </div>
     

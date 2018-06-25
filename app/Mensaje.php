@@ -19,4 +19,9 @@ class Mensaje extends Model
     protected $guarded=[
 
     ];
+/*
+    public function producto() {
+    	return $this->hasOne('App\Producto');
+    }
+    */
 }
