@@ -15,6 +15,7 @@ class CompraProductoController extends Controller
     }
 
     public function store(Request $request) {
+    	
     	$compra = new Mensaje;
         $compra->celular = $request->celular;
         $compra->mensaje = $request->mensaje;
@@ -22,7 +23,7 @@ class CompraProductoController extends Controller
         $compra->ciudad = $request->ciudad;
         $compra->leido = 0;
         $compra->producto_pro_id = $request->producto_pro_id;
-        $compra->users_id = 1;
+        $compra->users_id = $request->users_id;
 
         if($compra -> save()) {
             session()->flash('notificacion', 'Pedido realizado con exito!..');
@@ -34,7 +35,7 @@ class CompraProductoController extends Controller
 
     public function show($id) {
         $compra = new Mensaje;
-        $productos = Producto::find($id)->get();
+        $productos = Producto::findOrFail($id)->get();
         //$producto = Producto::where('producto', $id);
         //dd($producto);
         return view('user.compra_producto.index', compact('compra', 'productos'));

@@ -17,6 +17,9 @@
 		<div class="form-group">
 		{{ Form::number('producto_pro_id',$compra->producto_pro_id,['class' => 'form-control', 'placeholder'=>'Id...', 'style' => 'display: none']) }}
 		</div>
+		<div class="form-group">
+		{{ Form::number('users_id',$compra->users_id,['id' => 'users_id','class' => 'form-control', 'placeholder'=>'Id...', 'style' => 'display: none']) }}
+		</div>
 		<div class="form-group text-right">
 			<input type="submit" value="Realizar pedido" class="btn btn-success" >
 
