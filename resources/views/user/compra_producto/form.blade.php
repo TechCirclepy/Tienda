@@ -12,7 +12,7 @@
                   ), null,["class"=>"form-control".($errors->has('ciudad')?" is-invalid":""),"required",'placeholder'=>'Eligir ciudad ...']) !!}
 		</div>
 		<div class="form-group">
-		{{ Form::text('mensaje',$compra->mensaje,['class' => 'form-control', 'placeholder'=>'Mensaje...']) }}
+		{{ Form::textarea('mensaje',$compra->mensaje,['class' => 'form-control', 'placeholder'=>'Mensaje...']) }}
 		</div>
 		<div class="form-group">
 		{{ Form::number('producto_pro_id',$compra->producto_pro_id,['class' => 'form-control', 'placeholder'=>'Id...', 'style' => 'display: none']) }}
