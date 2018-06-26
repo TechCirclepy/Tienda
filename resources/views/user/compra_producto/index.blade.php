@@ -1,5 +1,9 @@
 @extends('layouts.user')
 @section('principal')
+<?php
+    use Tienda\User;
+    $empresas = User::all();
+?>
 <div class="container">
     <h1 class="text-center">Realizar pedido</h1>
     <div class="row">
@@ -54,7 +58,15 @@
     var user_id = "{{$producto->users_id}}";
     user_id = document.getElementsByName("users_id")[0].value = user_id;
     document.getElementById("pro_foto").src = "{{asset('imagenes/productos/'.$producto->pro_foto)}}";
-    document.getElementById("pro_empresa").innerHTML = "Tienda: {{$producto->pro_empresa}}";
+    var tienda = "{{$producto->users_id}}";
+  }
+</script>
+@endforeach
+@foreach($empresas as $empresa)
+<!--script que captura el id del producto para pasar sus caracteristicas -->
+<script>
+  if ( {{$empresa->id}} == tienda) {
+    document.getElementById("pro_empresa").innerHTML = "<b>Tienda:</b> {{$empresa->name}}";
   }
 </script>
 @endforeach
