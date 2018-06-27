@@ -38,6 +38,9 @@ body {
 }
 .favorite{
   position: absolute;
+  border: 6px solid hsla(250,100%,100%,0.1);
+  border-radius: 8px;
+  background-color: hsla(250,100%,100%,0.6);
   right: 10px;
   top: 10px;
   color:red
