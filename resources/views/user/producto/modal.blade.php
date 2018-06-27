@@ -1,48 +1,62 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$pro->pro_id}}">
-
-{!! Form::open(array('url'=>'tienda/mensaje','method'=>'POST','autocomplete'=>'off')) !!}
-			{{Form::token()}}
-	<div class="modal-dialog">
-		<div class="modal-content"> 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">x</span>
-				</button>
-				<h4 class="modal-title">Enviar mensaje</h4>
-			</div>
-			<div class="modal-body">
-				<div class="form-group">
-					<br /><label for="Nombre">Nombre</label>
-					<input type="text" name="nombre" class="form-control" placeholder="Nombre del producto" />
-				</div>
-				<div class="form-group">
-					<br /><label for="Nombre">Celular</label>
-					<input type="text" name="celular" onkeypress="return permite(event, 'num')" class="form-control" placeholder="Nombre del producto" />
-				</div>
-				<div class="form-group">
-					<br /><label for="Nombre">Ciudad</label>
-					<input type="text" name="ciudad" class="form-control" placeholder="Nombre del producto" />
-				</div>
-				<div class="form-group">
-					<br /><label for="Nombre">Mensaje</label>
-					<textarea name="mensaje" id="" cols="30" rows="10"></textarea>
-				</div>
-				<div class="form-group">
-					<br /><label for="Nombre">Empresa</label>
-					<input type="text" name="users_id" class="form-control" value="{{$pro->empresaid}}" />
-				</div>
-				<div class="form-group">
-					<br /><label for="Nombre">Producto</label>
-					<input type="text" name="producto_pro_id" class="form-control" value="{{$pro->pro_id}}" />
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="submit" class="btn btn-primary">Confirmar</button>
-			</div>
-		</div>
-	</div>
-
-	{{Form::Close()}}
-	
-</div>
+<div class="modal fade" id="DetalleModal" role="dialog" id="{{$pro->pro_id}}">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detalle del producto</h4>
+          <button type="button" class="btn btn-default" data-dismiss="modal">X</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="">Producto: </label>
+                <input type="text" id="pro-nom" class="form-control" disabled>
+              </div>
+              <div class="col-sm-6" style="margin: -2.5% 0;">
+                <p class="text-center">
+                  <img id="pro-foto" class="rounded-circle" src="" alt="" style="width: 90px; height: 90px;">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Descripcion: </label>
+            <textarea type="textarea" id="pro-info" class="form-control Fields" disabled></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Tienda: </label>
+            <input type="text" id="pro-empresa" class="form-control" disabled>
+          </div>
+          <div class="form-group">
+            <label for="">Precio de oferta: </label>
+            <input type="text" id="pro-oferta" class="form-control" disabled>
+          </div>
+          <div class="form-group">
+            <label for="">Precio normal: </label>
+            <input type="text" id="pro-precio" class="form-control" disabled>
+          </div>
+        </div>
+        <!--
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+        -->
+      </div>  
+    </div>
+  </div>
+<script>
+// Muestra el detalle del producto
+  $(document).on('click', '.open-modal', function() {
+    $('.modal-title').text('Detalle del producto');
+    $('#pro-nom').val($(this).data('pro-nom'));
+    $('#pro-info').val($(this).data('pro-info'));
+    $('#pro-empresa').val($(this).data('pro-empresa'));
+    $('#pro-foto').attr('src', $(this).data('pro-foto'));
+    if ("{{$pro->pro_ofer_active}}" == 1) {
+      $('#pro-oferta').val($(this).data('pro-oferta'));
+    } else {
+      $('#pro-precio').val($(this).data('pro-precio'));
+    }
+  });
+</script>

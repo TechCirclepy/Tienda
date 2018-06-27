@@ -27,7 +27,6 @@ Route::resource('tienda/estadisticas','EstadisticaController');
 Route::resource('tienda/mensaje','MensajeController');
 //
 Route::resource('comprar', 'CompraProductoController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
