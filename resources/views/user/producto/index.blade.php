@@ -7,19 +7,17 @@
     @if($pro->emp_activo==1)
     <div class="col-lg-3 col-sm-3 portfolio-item" id="{{$pro->pro_id}}">
         <div class="card h-100">
-<<<<<<< HEAD
             <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart-o" style="font-size:30px;"></i>
-            <a href="#"><img class="card-img-top img-rounded" src="{{asset('imagenes/productos/'.$pro->pro_foto)}}"  height="200px" alt=""></a>
-=======
             <a href="#">
                 <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$pro->pro_foto)}}"  height="200px" alt="" data-toggle="modal" data-target="#DetalleModal" 
                 data-pro-id="{{$pro->pro_id}}" data-pro-nom="{{$pro->pro_nom}}" data-pro-info="{{$pro->pro_info}}" data-pro-foto="{{asset('imagenes/productos/'.$pro->pro_foto)}}" data-pro-empresa="{{$pro->empresa}}" data-pro-oferta="{{$pro->pro_oferta}}" data-pro-precio="{{$pro->pro_precio}}" 
                 data-pro-active="{{$pro->pro_ofer_active}}">
             </a>
->>>>>>> b89f7a8a2a55ffe58d18903412b16196fdb0e9a0
             <div class="card-body">
                 <h4 class="card-title">
-                    <a href="#">{{$pro->pro_nom}}</a>
+                    <a href="#" data-toggle="modal" data-target="#DetalleModal" 
+                data-pro-id="{{$pro->pro_id}}" data-pro-nom="{{$pro->pro_nom}}" data-pro-info="{{$pro->pro_info}}" data-pro-foto="{{asset('imagenes/productos/'.$pro->pro_foto)}}" data-pro-empresa="{{$pro->empresa}}" data-pro-oferta="{{$pro->pro_oferta}}" data-pro-precio="{{$pro->pro_precio}}" 
+                data-pro-active="{{$pro->pro_ofer_active}}">{{$pro->pro_nom}}</a>
                 </h4>
                 <p class="card-text">{{$pro->pro_info}}</p>
                 <p><b>Tienda:</b> {{$pro->empresa}}<br>
@@ -41,7 +39,6 @@
     @endif
     @endforeach
 </div>
-<<<<<<< HEAD
 <script>
 function changefavorite(e) {
     var catureclass = $(e).attr('class');
@@ -62,8 +59,6 @@ function nomegusta(e) {
     alert(id_prod);
 }
 </script>
-=======
->>>>>>> b89f7a8a2a55ffe58d18903412b16196fdb0e9a0
 {{$productos->render()}}
 @endsection
 
