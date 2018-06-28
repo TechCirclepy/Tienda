@@ -7,7 +7,7 @@
     @if($emp->activo==1)
     <div class="col-lg-3 col-sm-3 portfolio-item">
         <div class="card h-100">
-            <a href="#"><img class="card-img-top img-rounded" src="{{asset('imagenes/empresas/'.$emp->foto)}}"  height="200px" alt=""></a>
+            <a href="{{ url('info-empresa',array($emp->id)) }}"><img class="card-img-top img-rounded" src="{{asset('imagenes/empresas/'.$emp->foto)}}"  height="200px" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <a href="{{ url('info-empresa',array($emp->id)) }}">{{$emp->name}}</a>

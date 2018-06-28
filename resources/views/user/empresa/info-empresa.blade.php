@@ -42,7 +42,6 @@
                     <a href="#">{{$pro->pro_nom}}</a>
                 </h4>
                 <p class="card-text">{{$pro->pro_info}}</p>
-                <p><b>Tienda:</b> {{$pro->empresa}}<br>
                     @if ($pro->pro_ofer_active==1)
                     <b>Precio: </b><strike style="color: red;">{{$pro->pro_precio}}</strike> | <b>Oferta: </b>{{$pro->pro_oferta}}
                     @else
