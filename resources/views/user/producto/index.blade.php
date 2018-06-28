@@ -15,9 +15,7 @@
             </a>
             <div class="card-body">
                 <h4 class="card-title">
-                    <a href="#" data-toggle="modal" data-target="#DetalleModal" 
-                data-pro-id="{{$pro->pro_id}}" data-pro-nom="{{$pro->pro_nom}}" data-pro-info="{{$pro->pro_info}}" data-pro-foto="{{asset('imagenes/productos/'.$pro->pro_foto)}}" data-pro-empresa="{{$pro->empresa}}" data-pro-oferta="{{$pro->pro_oferta}}" data-pro-precio="{{$pro->pro_precio}}" 
-                data-pro-active="{{$pro->pro_ofer_active}}">{{$pro->pro_nom}}</a>
+                    <a href="#">{{$pro->pro_nom}}</a>
                 </h4>
                 <p class="card-text">{{$pro->pro_info}}</p>
                 <p><b>Tienda:</b> {{$pro->empresa}}<br>

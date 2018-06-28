@@ -3,6 +3,9 @@
 <?php
     use Tienda\User;
     $empresas = User::all();
+    //funcionalidad para obtener el id de la empresa
+    $url= $_SERVER["REQUEST_URI"];
+    $productoID = intval(preg_replace('/[^0-9]+/', '', $url), 10); 
 ?>
 <div class="container">
     <h1 class="text-center">Realizar pedido</h1>
@@ -10,17 +13,30 @@
       <div class="col-sm-6">
         @include('user.compra_producto.form', ['compra' => $compra, 'url' => '/comprar', 'method' => 'POST'])
       </div>
-      <div class="col-sm-6">
-        <div class="thumbnail">
-          <img id="pro_foto" src="http://placehold.it/320x150" alt="" style="width: 400px; height: 250px;">
-            <div class="caption">
-              <h4 id="pro_precio" class="">$24.99</h4>
-              <h4><a id="pro_nom" href="#">First Product</a></h4>
-              <p id="pro_info" >See more snippets like this online store item at</p>
-              <p id="pro_empresa"></p>
-            </div>
+      @foreach($productos as $producto)
+        @if($producto->pro_id == $productoID)
+          <div class="col-sm-6">
+            <div class="thumbnail">
+              <img id="pro_foto" src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" alt="" style="width: 400px; height: 250px;">
+                <div class="caption">
+                @if ($producto->pro_ofer_active==1)
+                  <h4 id="pro_precio" class="">Precio Oferta: {{$producto->pro_oferta}}</h4>
+                @else
+                  <h4 id="pro_precio" class="">Precio Normal: {{$producto->pro_precio}}</h4>
+                @endif
+                  <h4><a id="pro_nom" href="#">{{$producto->pro_nom}}</a></h4>
+                  <p id="pro_info" >{{$producto->pro_info}}</p>
+                @foreach($empresas as $empresa)
+                  @if($empresa->id == $producto->users_id)
+                    <p id="pro_empresa">Tienda: {{$empresa->name}}</p>
+                  @endif
+                @endforeach 
+                  
+                </div>
+              </div>
           </div>
-      </div>    
+        @endif
+      @endforeach    
     </div>
 </div>
 <div class="container">
@@ -33,41 +49,12 @@
   </div>
   @endif
 </div>
-
 <script>
-  //script para estirar el ID del producto de la url
-  var regex = /(\d+)/g;
-  var URLactual = window.location.pathname;
-  var convertir = URLactual.match(regex);//saca las cadenas de texto para que quede el id
-  convertir = document.getElementsByName("producto_pro_id")[0].value = convertir;
-  var EnteroConvert = Number(convertir);
+  //script para guardar el id del producto y el usuario
+  var productoIDjs = '<?php echo $productoID; ?>';
+  document.write('VariableJS = ' + productoIDjs);
+  productoIDjs = document.getElementsByName("producto_pro_id")[0].value = productoIDjs;
+  var user_id = "{{$producto->users_id}}";
+  user_id = document.getElementsByName("users_id")[0].value = user_id;
 </script>
-@foreach($productos as $producto)
-<!--script que captura el id del producto para pasar sus caracteristicas -->
-<script>
-  if ( {{$producto->pro_id}} == EnteroConvert) {
-    document.getElementById("pro_nom").innerHTML = "{{$producto->pro_nom}}";
-
-    if({{$producto->pro_ofer_active }} == 1) {
-       document.getElementById("pro_precio").innerHTML = "Precio de Oferta: {{$producto->pro_oferta}}";
-    } else {
-      document.getElementById("pro_precio").innerHTML = "Precio: {{$producto->pro_precio}}";
-    }
-    
-    document.getElementById("pro_info").innerHTML = "{{$producto->pro_info}}";
-    var user_id = "{{$producto->users_id}}";
-    user_id = document.getElementsByName("users_id")[0].value = user_id;
-    document.getElementById("pro_foto").src = "{{asset('imagenes/productos/'.$producto->pro_foto)}}";
-    var tienda = "{{$producto->users_id}}";
-  }
-</script>
-@endforeach
-@foreach($empresas as $empresa)
-<!--script que captura el id del producto para pasar sus caracteristicas -->
-<script>
-  if ( {{$empresa->id}} == tienda) {
-    document.getElementById("pro_empresa").innerHTML = "<b>Tienda:</b> {{$empresa->name}}";
-  }
-</script>
-@endforeach
 @endsection

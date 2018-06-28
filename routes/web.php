@@ -19,6 +19,7 @@ Route::resource('user/empresa/index','CargaEmpresaController');
 Route::resource('user/producto/index','CargaProductoController');
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/empresa','EmpresaController');
+Route::resource('info-empresa','EmpresaInfoController');
 Route::resource('tienda/producto','ProductoController');
 Route::resource('tienda/subcategoria','SubCategoriaController');
 Route::resource('tienda/detalle','CatDetalleController');

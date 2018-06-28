@@ -10,13 +10,14 @@
             <a href="#"><img class="card-img-top img-rounded" src="{{asset('imagenes/empresas/'.$emp->foto)}}"  height="200px" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
-                    <a href="#">{{$emp->name}}</a>
+                    <a href="{{ url('info-empresa',array($emp->id)) }}">{{$emp->name}}</a>
                 </h4>
                 <p class="card-text">{{$emp->descripcion}}</p>
                 <p>
                   <center><h4><b>Contacto</b></h4></center>
                   <p><b>Dirección:</b> {{$emp->direccion}}</p>
                   <p><b>Celular:</b> <a href="tel:0{{$emp->cel}}">0{{$emp->cel}}</a></p>
+
                 </p>
             </div>
         </div>
