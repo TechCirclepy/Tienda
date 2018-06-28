@@ -22,7 +22,7 @@
 		            </ul>
 				</div>
 			</div>
-			<hr>
+			<hr class="linea">
 		</div>
 	@endif
 @endforeach
