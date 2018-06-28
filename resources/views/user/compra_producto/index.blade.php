@@ -52,7 +52,6 @@
 <script>
   //script para guardar el id del producto y el usuario
   var productoIDjs = '<?php echo $productoID; ?>';
-  document.write('VariableJS = ' + productoIDjs);
   productoIDjs = document.getElementsByName("producto_pro_id")[0].value = productoIDjs;
   var user_id = "{{$producto->users_id}}";
   user_id = document.getElementsByName("users_id")[0].value = user_id;

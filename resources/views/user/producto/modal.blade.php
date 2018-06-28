@@ -25,8 +25,12 @@
             <textarea type="textarea" id="pro-info" class="form-control Fields" disabled></textarea>
           </div>
           <div class="form-group">
+          @if($pro->empresa == "")
+            <!-- nada que mostrar -->
+          @else
             <label for="">Tienda: </label>
             <input type="text" id="pro-empresa" class="form-control" disabled>
+          @endif
           </div>
           <div class="form-group">
             <label for="">Precio de oferta: </label>
@@ -55,8 +59,11 @@
     $('#pro-foto').attr('src', $(this).data('pro-foto'));
     if ("{{$pro->pro_ofer_active}}" == 1) {
       $('#pro-oferta').val($(this).data('pro-oferta'));
+      $('#pro-precio').val($(this).data('pro-precio'));
+
     } else {
       $('#pro-precio').val($(this).data('pro-precio'));
+      $('#pro-oferta').val($(this).data('pro-oferta'));
     }
   });
 </script>
