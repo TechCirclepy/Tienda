@@ -11,13 +11,13 @@
           <div class="form-group">
             <label for="">Por que desea reportar <b>"{{$pro->pro_nom}}"</b>?</label>
             <div class="checkbox">
-              <label><input type="radio" value=""> El producto no existe</label>
+              <label><input type="radio" name="radio" value=""> El producto no existe</label>
             </div>
             <div class="checkbox">
-              <label><input type="radio" value=""> Creo que el producto no deberia estar en FashionCaacupé</label>
+              <label><input type="radio" name="radio" value=""> Creo que el producto no deberia estar en FashionCaacupé</label>
             </div>
             <div class="checkbox disabled">
-              <label><input type="radio" value=""> Es contenido engañoso, ofensivo o inapropiado</label>
+              <label><input type="radio" name="radio" value=""> Es contenido engañoso, ofensivo o inapropiado</label>
             </div>
           </div>
           <div class="form-group">
