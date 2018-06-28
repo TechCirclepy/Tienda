@@ -26,9 +26,9 @@
 		</div>
 	@endif
 @endforeach
-@foreach($productos as $pro)
-	@if ($pro->users_id == $empresaID)
 	<div class="row">
+        @foreach($productos as $pro)
+        @if ($pro->users_id == $empresaID)
 		<div class="col-lg-3 col-sm-3 portfolio-item" id="{{$pro->pro_id}}">
         <div class="card h-100">
             <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart-o" style="font-size:30px;"></i>
@@ -57,9 +57,10 @@
             </div>
         </div>
     </div>
-	</div>	
-    @endif	
+        @endif  
 @endforeach
+	</div>	
+
 <a href="javascript:history.go(-1)">Atras</a>
 @include('user.producto.modal')
 @endsection
