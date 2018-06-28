@@ -60,12 +60,6 @@
 	</div>	
     @endif	
 @endforeach
-<button onclick="goBack()">Go Back</button>
-<script type="text/javascript">
-function goBack() {
-    event.preventDefault()
-    window.history.back();
-}
-</script>
+<a href="javascript:history.go(-1)">Atras</a>
 @include('user.producto.modal')
 @endsection

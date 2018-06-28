@@ -23,6 +23,6 @@
 		<div class="form-group text-right">
 			<input type="submit" value="Realizar pedido" class="btn btn-success" >
 
-			<a class="pull-left" href="{{ url('/') }}"><--Atras</a>
+			<a href="javascript:history.go(-1)">Atras</a>
 		</div>
 {!! Form::close() !!}
