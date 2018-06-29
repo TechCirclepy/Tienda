@@ -15,6 +15,8 @@ Route::get('/', function () {
 });
 Route::get('mail', 'MailController@index');
 Route::post('postmail', 'MailController@post');
+Route::get('denuncia', 'ReporteProductoController@index');
+Route::post('postdenuncia', 'ReporteProductoController@store');
 Route::resource('user/empresa/index','CargaEmpresaController');
 Route::resource('user/producto/index','CargaProductoController');
 Route::resource('tienda/categoria','CategoriaController');

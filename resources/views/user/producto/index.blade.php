@@ -27,7 +27,7 @@
                     <b>Precio: </b>{{$pro->pro_precio}}
                     @endif
                 </p>
-                <span><a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-pro-name="{{$pro->pro_nom}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a> </span>
+                <span><a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-pro-name="{{$pro->pro_nom}}" data-pro-empresa="{{$pro->empresa}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a> </span>
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
