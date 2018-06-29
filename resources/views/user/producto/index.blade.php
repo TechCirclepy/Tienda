@@ -2,6 +2,7 @@
 @section('principal')
 <!-- Container (Productos Sección) -->
 @include('user.producto.search')
+@include('user.producto.reportemensaje')
 <div class="row">
     @foreach($productos as $pro)
     @if($pro->emp_activo==1)
@@ -27,7 +28,7 @@
                     <b>Precio: </b>{{$pro->pro_precio}}
                     @endif
                 </p>
-                <span><a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-pro-name="{{$pro->pro_nom}}" data-pro-empresa="{{$pro->empresa}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a> </span>
+                <span><a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-proid="{{$pro->pro_id}}" data-proname="{{$pro->pro_nom}}" data-proempresa="{{$pro->empresa}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a> </span>
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
@@ -37,10 +38,10 @@
         </div>
     </div>
     @include('user.producto.modal')
-    @include('user.producto.modal-reporte')
     @endif
     @endforeach
 </div>
+@include('user.producto.modal-reporte')
 <script>
 function changefavorite(e) {
     var catureclass = $(e).attr('class');

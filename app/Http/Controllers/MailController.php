@@ -27,7 +27,6 @@ class MailController extends Controller
     		'bodyMessage'=>$request->message,
 
     	];
-
     	Mail::send('mails.mailsend', $data, function($message) use ($data) {
     		$message->from($data['email'], 'Fashion Caacupe');
     		$message->to('techcirclepy@gmail.com');

@@ -7,10 +7,11 @@ use Mail;
 class ReporteProductoController extends Controller
 {
     //
-    public function index() {
-    	return view('user.producto.index');
+    /* lo use para comprobar si envia los datos
+    public function sendEmail(Request $request){
+        dd($request->all());
     }
-
+    */
     public function store(Request $request) {
     	$request->validate([
     		'producto' => 'required',
@@ -26,7 +27,7 @@ class ReporteProductoController extends Controller
     	];
 
     	Mail::send('mails.sendreporte', $data, function($message) use ($data) {
-    		$message->from('REPORTE DE PRODUCTO', 'Fashion Caacupe');
+    		$message->from('reportes@gmail.com', 'Fashion Caacupe');
     		$message->to('techcirclepy@gmail.com');
     		$message->subject($data['producto']);
     		$message->priority($data['empresa']);

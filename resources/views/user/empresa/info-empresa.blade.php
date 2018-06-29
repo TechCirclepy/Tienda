@@ -26,6 +26,7 @@
 		</div>
 	@endif
 @endforeach
+@include('user.producto.reportemensaje')
 	<div class="row">
         @foreach($productos as $pro)
         @if ($pro->users_id == $empresaID)
@@ -48,6 +49,7 @@
                     <b>Precio: </b>{{$pro->pro_precio}}
                     @endif
                 </p>
+                <span><a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-proid="{{$pro->pro_id}}" data-proname="{{$pro->pro_nom}}" data-proempresa="{{$pro->empresa}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a> </span>
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
@@ -56,10 +58,11 @@
             </div>
         </div>
     </div>
-        @endif  
+        @endif
+        @include('user.producto.modal-reporte') 
 @endforeach
 	</div>	
 
-<a href="javascript:history.go(-1)">Atras</a>
+<a type="button" href="javascript:history.go(-1)" class="btn btn-default">Atras</a>
 @include('user.producto.modal')
 @endsection
