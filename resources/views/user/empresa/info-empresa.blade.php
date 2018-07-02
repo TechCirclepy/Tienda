@@ -43,13 +43,24 @@
                     <a href="#">{{$pro->pro_nom}}</a>
                 </h4>
                 <p class="card-text">{{$pro->pro_info}}</p>
+                <p>
                     @if ($pro->pro_ofer_active==1)
                     <b>Precio: </b><strike style="color: red;">{{$pro->pro_precio}}</strike> | <b>Oferta: </b>{{$pro->pro_oferta}}
                     @else
                     <b>Precio: </b>{{$pro->pro_precio}}
                     @endif
                 </p>
-                <span><a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-proid="{{$pro->pro_id}}" data-proname="{{$pro->pro_nom}}" data-proempresa="{{$pro->empresa}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a> </span>
+                <span>
+                    <a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-proid="{{$pro->pro_id}}" data-proname="{{$pro->pro_nom}}"
+                     @foreach ($empresas as $empresa)
+                        @if($empresa->id == $pro->users_id)
+                            data-proempresa="{{$empresa->name}}">
+                        @endif
+                    @endforeach
+                        <i class="fa fa-exclamation-triangle"></i>
+                            Reportar
+                    </a>
+                </span>
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
@@ -58,9 +69,9 @@
             </div>
         </div>
     </div>
-        @endif
-        @include('user.producto.modal-reporte') 
+        @endif 
 @endforeach
+@include('user.producto.modal-reporte')
 	</div>	
 
 <a type="button" href="javascript:history.go(-1)" class="btn btn-default">Atras</a>

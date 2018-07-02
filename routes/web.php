@@ -13,9 +13,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('mail', 'MailController@index');
-Route::post('postmail', 'MailController@post');
-Route::post('postdenuncia', 'ReporteProductoController@store');
+Route::post('prueba', 'ReporteProductoController@sendEmail');
+Route::get('mail', 'MailController@index');//contactos
+Route::post('postmail', 'MailController@post');//contactos
+Route::post('postreporte', 'ReporteProductoController@store');//reporte de productos
 Route::resource('user/empresa/index','CargaEmpresaController');
 Route::resource('user/producto/index','CargaProductoController');
 Route::resource('tienda/categoria','CategoriaController');

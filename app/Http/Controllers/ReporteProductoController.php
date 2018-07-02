@@ -7,11 +7,11 @@ use Mail;
 class ReporteProductoController extends Controller
 {
     //
-    /* lo use para comprobar si envia los datos
+    //lo use para comprobar si envia los datos
     public function sendEmail(Request $request){
         dd($request->all());
     }
-    */
+    
     public function store(Request $request) {
     	$request->validate([
     		'producto' => 'required',

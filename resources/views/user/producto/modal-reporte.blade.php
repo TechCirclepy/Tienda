@@ -2,7 +2,7 @@
 <div class="modal fade" id="modal-reporte" role="dialog">
   <div class="modal-dialog">
       <!-- Modal content-->
-  <form class="form" action="{{ url('postdenuncia')}}" method="post">
+  <form class="form" action="{{ url('postreporte')}}" method="post">
   <fieldset>
   {{ csrf_field() }}
     <div class="modal-content">
@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="modal-footer" text-inline>
-          <p type="text">Todas las denuncias son confidenciales y se estara revisando tu reporte de
+          <p type="text">Todas los reportes son confidenciales y se estara revisando tu reporte de
           <b type="text" class="pro"></b> en la brevedad posible
           </p>
         </div>
