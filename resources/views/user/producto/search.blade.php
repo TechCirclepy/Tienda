@@ -8,12 +8,12 @@
     <select name="searchText2" class="custom-select" id="">
           <option value="" selected>Cordillera</option>
         @foreach($ciudads as $ciu)
-        @if ($ciu->ciu_id==$searchText2)
-                  <option value="{{$ciu->ciu_id}}" selected>{{$ciu->ciu_nom}}</option>
-        @else
-          <option value="{{$ciu->ciu_id}}">{{$ciu->ciu_nom}}</option>
-        @endif
-      @endforeach
+          @if ($ciu->ciu_id==$searchText2)
+            <option value="{{$ciu->ciu_id}}" selected>{{$ciu->ciu_nom}}</option>
+          @else
+            <option value="{{$ciu->ciu_id}}">{{$ciu->ciu_nom}}</option>
+          @endif
+        @endforeach
     </select>
   </div>
   <input type="text" name="searchText" value="{{$searchText}}" class="form-control" placeholder="¿Qué Buscas?">

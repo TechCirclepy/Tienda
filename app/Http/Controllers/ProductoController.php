@@ -38,6 +38,11 @@ class ProductoController extends Controller
          	->orwhere('u.name','LIKE','%'.$query.'%')
          	->orderBy('p.pro_id','desc')
          	->paginate(7);
+         	if (count($productos)) {
+                //si hay resultados en la busqueda
+            } else {
+               session()->flash('busqueda-producto', ' No se encontro resultados en su busqueda'); 
+            }
          	return view('tienda.producto.index', ['productos' => $productos,"searchText"=>$query]);
          }
     }

@@ -38,8 +38,15 @@ class CargaProductoController extends Controller
             ->where('p.pro_nom','LIKE','%'.$query.'%')
             ->orderBy('p.pro_id','desc')
             ->paginate(21);
+
+            if (count($productos)) {
+                //si hay resultados en la busqueda
+            } else {
+               session()->flash('busqueda-producto', ' No se encontro resultados en su busqueda'); 
+            }
             return view('user.producto.index', ['productos' => $productos,"searchText2"=>$query2,"searchText"=>$query]);
          }
+       //session()->flash('busqueda-producto', 'no hay nada');
     }
 
      public function create() {

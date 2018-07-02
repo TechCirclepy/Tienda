@@ -3,6 +3,7 @@
 	@if (Auth::user()->admin==1)
 		<h3>Listado de Empresas <a href="empresa/create"><button class="btn btn-primary">Nuevo</button></a></h3><br/>
 		@include('tienda.empresa.search')
+		@include('user.producto.reportemensaje')
 	@else
 
 	@endif

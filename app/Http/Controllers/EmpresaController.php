@@ -27,6 +27,11 @@ class EmpresaController extends Controller
          	->where('u.name','LIKE','%'.$query.'%')
          	->orderBy('u.id','desc')
          	->paginate(7);
+         	if (count($empresas)) {
+                //si hay resultados en la busqueda
+            } else {
+               session()->flash('busqueda-producto', ' No se encontro resultados en su busqueda'); 
+            }
          	return view('tienda.empresa.index', ['empresas' => $empresas,"searchText"=>$query]);
          }
     }

@@ -45,9 +45,9 @@
                 <p class="card-text">{{$pro->pro_info}}</p>
                 <p>
                     @if ($pro->pro_ofer_active==1)
-                    <b>Precio: </b><strike style="color: red;">{{$pro->pro_precio}}</strike> | <b>Oferta: </b>{{$pro->pro_oferta}}
-                    @else
-                    <b>Precio: </b>{{$pro->pro_precio}}
+                        <b>Precio: </b><strike style="color: red;">{{$pro->pro_precio}}</strike> | <b>Oferta: </b>{{$pro->pro_oferta}}
+                        @else
+                        <b>Precio: </b>{{$pro->pro_precio}}
                     @endif
                 </p>
                 <span>
