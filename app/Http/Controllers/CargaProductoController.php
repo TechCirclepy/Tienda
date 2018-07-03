@@ -40,7 +40,8 @@ class CargaProductoController extends Controller
             ->paginate(21);
 
             if (count($productos)) {
-                //si hay resultados en la busqueda
+                //si hay resultados en la busqueda elimina la sesion busqueda-producto
+                session()->forget('busqueda-producto');
             } else {
                session()->flash('busqueda-producto', ' No se encontro resultados en su busqueda'); 
             }
