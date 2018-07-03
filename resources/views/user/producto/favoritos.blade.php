@@ -6,7 +6,7 @@
 <div class="row">
     @foreach($productos as $pro)
     @if($pro->emp_activo==1)
-    <div class="col-lg-3 col-sm-3 portfolio-item">
+    <div class="col-lg-3 col-sm-3 portfolio-item" id="{{$pro->pro_id}}">
         <div class="card h-100">
             <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart-o" style="font-size:30px;"></i>
             <a href="#">
@@ -38,17 +38,11 @@
         </div>
     </div>
     @include('user.producto.modal')
+    <script>
+        alert("ingreso");
+    </script>
     @endif
     @endforeach
-    <script>
-        //recuperar favoritos y cambiar coloración del corazón
-        var id_values = document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        var captura_id = id_values.split(",");
-        for (var i in captura_id) {
-            var e = "#"+captura_id[i];
-            $(e).addClass("fa-heart").removeClass("fa-heart-o");
-        }
-    </script>
 </div>
 @include('user.producto.modal-reporte')
 <script>
