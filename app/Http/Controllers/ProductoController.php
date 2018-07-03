@@ -78,12 +78,13 @@ class ProductoController extends Controller
 		$producto->categoriadetalle_det_id=$request->get('categoriadetalle_det_id');
 		$producto->users_id=$request->get('users_id');
 		$producto->ciudad_ciu_id=$request->get('ciudad_ciu_id');
-		$producto->save();
+		//$producto->save();
 
-		
-        return Redirect::to('tienda/producto');
-        
-		
+		if($producto->save()) {
+			return redirect('/tienda/producto')->with('agregar-producto', 'Producto agregado correctamente!'); 
+		} else {
+			return Redirect::to('tienda/producto/create');
+		}
 	}
     public function show($id) {
 		 return view("tienda.producto.show",["producto"=>Producto::findOrFail($id)]);

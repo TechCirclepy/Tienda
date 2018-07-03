@@ -3,7 +3,7 @@
 	
 	<h3>Listado de Productos <a href="producto/create"><button class="btn btn-primary">Nuevo</button></a></h3><br/>
 	@include('tienda.producto.search')
-	@include('user.producto.reportemensaje')
+	@include('tienda.producto.mensajes')
 	<table class="table table-bordered">
   		<thead class="thead-dark">
   			<tr>
@@ -94,6 +94,7 @@
 				@include('tienda.producto.modal')
 			@endif
 		@endforeach
+
 				</table>
 				<nav aria-label="Page navigation">
 					{{$productos->render()}}
