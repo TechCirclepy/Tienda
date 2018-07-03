@@ -1,14 +1,14 @@
 @extends('layouts.user')
 @section('principal')
 <!-- Container (Productos Sección) -->
-@include('user.producto.search')
+
 @include('user.producto.reportemensaje')
 <div class="row">
     @foreach($productos as $pro)
     @if($pro->emp_activo==1)
-    <div class="col-lg-3 col-sm-3 portfolio-item" id="{{$pro->pro_id}}">
+    <div class="col-lg-3 col-sm-3 portfolio-item" style="visibility: hidden; display:none;" id="{{$pro->pro_id}}">
         <div class="card h-100">
-            <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart-o" style="font-size:30px;"></i>
+            <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart" style="font-size:30px;"></i>
             <a href="#">
                 <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$pro->pro_foto)}}"  height="200px" alt="" data-toggle="modal" data-target="#DetalleModal" 
                 data-pro-id="{{$pro->pro_id}}" data-pro-nom="{{$pro->pro_nom}}" data-pro-info="{{$pro->pro_info}}" data-pro-foto="{{asset('imagenes/productos/'.$pro->pro_foto)}}" data-pro-empresa="{{$pro->empresa}}" data-pro-oferta="{{$pro->pro_oferta}}" data-pro-precio="{{$pro->pro_precio}}" 
@@ -38,11 +38,18 @@
         </div>
     </div>
     @include('user.producto.modal')
-    <script>
-        alert("ingreso");
-    </script>
     @endif
     @endforeach
+    <script>
+        //recuperar favoritos y cambiar coloración del corazón
+        var id_values = document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        var captura_id = id_values.split(",");
+        for (var i in captura_id) {
+            var e = "#"+captura_id[i];
+            $(e).css('visibility', 'visible');
+            $(e).css('display', 'inline');
+        }
+    </script>
 </div>
 @include('user.producto.modal-reporte')
 <script>
@@ -72,6 +79,8 @@ function changefavorite(e) {
             }
         }
         document.cookie = "id=" + seleccion + ";" + expires + ";path=/";
+        var ocultar = "#"+id_prod;
+        $(ocultar).hide("slow");
     }
 }
 function megusta(e) {
