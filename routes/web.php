@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/prueba', function () {
-    return view('prueba');
+Route::get('/', function () {
+    return view('welcome');
 });
 Route::post('prueba', 'ReporteProductoController@sendEmail');
 Route::get('mail', 'MailController@index');//contactos
