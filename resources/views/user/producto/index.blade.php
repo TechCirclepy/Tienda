@@ -1,5 +1,6 @@
 @extends('layouts.user')
 @section('principal')
+
 <!-- Container (Productos Sección) -->
 @include('user.producto.search')
 @include('user.producto.reportemensaje')
