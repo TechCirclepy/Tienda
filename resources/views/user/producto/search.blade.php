@@ -18,7 +18,7 @@
   </div>
   <input type="text" name="searchText" value="{{$searchText}}" class="form-control" placeholder="¿Qué Buscas?">
   <div class="input-group-prepend">
-    <button class="btn btn-outline-secondary" type="sumit">Buscar</button>
+    <button class="btn btn-outline-secondary" id="buscar" type="sumit">Buscar</button>
   </div>
 </div>
 

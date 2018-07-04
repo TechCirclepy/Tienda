@@ -28,7 +28,8 @@ class EmpresaController extends Controller
          	->orderBy('u.id','desc')
          	->paginate(7);
          	if (count($empresas)) {
-                //si hay resultados en la busqueda
+                //si hay resultados en la busqueda elimina la sesion busqueda-producto
+                session()->forget('busqueda-producto');
             } else {
                session()->flash('busqueda-producto', ' No se encontro resultados en su busqueda'); 
             }

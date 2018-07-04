@@ -39,7 +39,8 @@ class ProductoController extends Controller
          	->orderBy('p.pro_id','desc')
          	->paginate(7);
          	if (count($productos)) {
-                //si hay resultados en la busqueda
+                //si hay resultados en la busqueda elimina la sesion busqueda-producto
+                session()->forget('busqueda-producto');
             } else {
                session()->flash('busqueda-producto', ' No se encontro resultados en su busqueda'); 
             }
@@ -77,8 +78,13 @@ class ProductoController extends Controller
 		$producto->categoriadetalle_det_id=$request->get('categoriadetalle_det_id');
 		$producto->users_id=$request->get('users_id');
 		$producto->ciudad_ciu_id=$request->get('ciudad_ciu_id');
-		$producto->save();
-		return Redirect::to('tienda/producto');
+		//$producto->save();
+
+		if($producto->save()) {
+			return redirect('/tienda/producto')->with('agregar-producto', 'Producto agregado correctamente!'); 
+		} else {
+			return Redirect::to('tienda/producto/create');
+		}
 	}
     public function show($id) {
 		 return view("tienda.producto.show",["producto"=>Producto::findOrFail($id)]);
