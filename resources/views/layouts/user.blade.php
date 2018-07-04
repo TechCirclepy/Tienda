@@ -37,7 +37,7 @@
               <a class="nav-link" href="/user/producto/favoritos">Favoritos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('mail') }}">Contacto</a>
+               <a class="nav-link" href="{{ url('mail') }}">Contacto</a>
             </li>
             @guest
             <li class="nav-item">

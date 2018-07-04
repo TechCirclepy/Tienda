@@ -39,6 +39,7 @@ class CargaFavoritosController extends Controller
             ->where('p.pro_nom','LIKE','%'.$query.'%')
             ->orderBy('p.pro_id','desc')
             ->paginate(21);
+            
 
             return view('user.producto.favoritos', ['productos' => $productos,"searchText2"=>$query2,"searchText"=>$query]);
         }

@@ -19,7 +19,7 @@ Route::post('postmail', 'MailController@post');//contactos
 Route::post('postreporte', 'ReporteProductoController@store');//reporte de productos
 Route::resource('user/empresa/index','CargaEmpresaController');
 Route::resource('user/producto/index','CargaProductoController');
-Route::get('user/producto/favoritos','CargaFavoritosController@listar');//carga de favoritos
+Route::get('user/producto/favoritos','CargaFavoritosController@listar'); //carga de favoritos
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/empresa','EmpresaController');
 Route::resource('info-empresa','EmpresaInfoController');
