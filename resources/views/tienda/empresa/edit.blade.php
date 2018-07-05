@@ -23,7 +23,7 @@
 			</div>
 			@if (Auth::user()->admin==1)
 			<div class="form-group">
-				<label for="Oferta_activada">Oferta activa</label><br />
+				<label for="Oferta_activada">Es un administrador</label><br />
 				@if ($empresa->admin==1)
                 	<input type="radio" name="admin" value="1" checked> Si 
   					<input type="radio" name="admin" value="0"> No<br>
@@ -33,6 +33,7 @@
 				@endif
   			</div>
   			@endif
+  			<!--
 			<div class="form-group">
 				<br /><label for="Nombre">Contraseña</label>
 				<input type="password" name="password" class="form-control" placeholder="Ingrese Contraseña" />
@@ -41,10 +42,11 @@
 				<br /><label for="Nombre">Confirmar Contraseña</label>
 				<input type="password" name="password_confirmation" class="form-control" placeholder="Confirme contraseña" />
 			</div>
+			-->
 			<div class="form-group">
 				<label for="imagen">Logotipo</label>
 				<input type="file" name="foto" value="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="form-control">
-				<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" alt="" />
+				<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" alt="" style="width: 100px;" />
 			</div>
 			<div class="form-group">
 				<label for="Descripción">Descripción</label>

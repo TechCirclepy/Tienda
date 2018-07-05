@@ -7,6 +7,18 @@
 	@else
 
 	@endif
+	@if(session()->has('pass'))
+	<div class="alert alert-success" id="success-alert">
+	   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	   <strong>Notificacion: </strong>{{session()->get('pass')}}
+	</div>
+	@endif
+	@if(session()->has('editado'))
+	<div class="alert alert-success" id="success-alert">
+	   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	   <strong>Notificacion: </strong>{{session()->get('editado')}}
+	</div>
+	@endif
 	<table class="table table-bordered">
   		<thead class="thead-dark">
   			<tr>
@@ -28,7 +40,7 @@
 				<td>{{$empresa->cel}}</td>
 				<td>{{$empresa->email}}</td>
 				<td>
-					<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" height="200px" alt="" />
+					<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" height="200px" alt="" style="width: 50px; height: 50px;" />
 				</td>
 				<td>
 					<a href="{{URL::action('EmpresaController@edit',$empresa->id)}}"><button class="btn btn-info">Editar</button></a>
@@ -37,6 +49,7 @@
 					@else
 						<a href="" data-target="#modal-delete-{{$empresa->id}}" data-toggle="modal"><button class="btn btn-success">Activar</button></a>
 					@endif
+					<a href="{{URL::action('EmpresaPassController@edit',$empresa->id)}}"><button class="btn btn-warning">Cambiar contraseña</button></a>
 				</td>
 			</tr>
 		@else 

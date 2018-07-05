@@ -23,6 +23,7 @@ Route::get('user/producto/favoritos','CargaFavoritosController@listar'); //carga
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/empresa','EmpresaController');
 Route::resource('info-empresa','EmpresaInfoController');
+Route::resource('cambiar-pass','EmpresaPassController');
 Route::resource('tienda/producto','ProductoController');
 Route::resource('tienda/subcategoria','SubCategoriaController');
 Route::resource('tienda/detalle','CatDetalleController');

@@ -72,7 +72,7 @@ class EmpresaController extends Controller
     public function update(EmpresaFormRequest $request,$id) {
         $empresa=User::findOrFail($id);
 		$empresa->name=$request->get('name');
-		$empresa->password=bcrypt($request->get('password'));
+		//$empresa->password=bcrypt($request->get('password'));
 		$empresa->descripcion=$request->get('descripcion');
 		$empresa->direccion=$request->get('direccion');
 		$empresa->cel=$request->get('cel');
@@ -85,7 +85,7 @@ class EmpresaController extends Controller
 		$empresa->admin=$request->get('admin');
 		$empresa->ciudad_ciu_id=$request->get('ciudad_ciu_id');
 		$empresa->update();
-		return Redirect::to('tienda/empresa');
+		return redirect('/tienda/empresa')->with('editado', 'Empresa editada correctamente!');
     }
     public function destroy($id){
     	$empresa=User::findOrFail($id);
