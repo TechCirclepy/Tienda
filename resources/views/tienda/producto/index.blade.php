@@ -10,7 +10,7 @@
 				<th scope="col">Nombre</th>
 				<th scope="col">Descripción</th>
 				<th scope="col">Precio</th>
-				<th scope="col">Foto</th>
+				<th scope="col" style="width: 40px; height: 40px; ">Foto</th>
 				<th scope="col">Categoria</th>
 				<th scope="col">Info</th>
 				<th scope="col">Opciones</th>
@@ -34,7 +34,13 @@
 						@endif
 					</td>
 					<td>
-						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="img-responsive" height="50px" alt="" style="width: 50px; height: 50px;" />
+					<style>
+						.estilo {
+							width: 40px !important; 
+							height: 40px !important;; 
+						}
+					</style>
+						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="estilo img-responsive"/>
 					</td>
 					<th>-> {{$producto->categoria}}<br />
 						-> {{$producto->subcategoria}}<br />

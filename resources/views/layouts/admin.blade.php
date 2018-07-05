@@ -27,6 +27,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto align-items-center">
+            <li class="nav-item">
+                <a href="/" class="nav-link"><i class="fa fa-file"></i> Ir a pagina pricipal</a>
+            </li>
           	<li class="nav-item">
 				@if (Auth::user()->admin==1)
 					<a href="/tienda/empresa" class="nav-link"><i class="fa fa-home nav_icon"></i> Empresas</a>
@@ -34,6 +37,7 @@
 					<a href="/tienda/empresa" class="nav-link"><i class="fa fa-home nav_icon"></i> Mi Empresa</a>
 				@endif
 			</li>
+            
             <li class="nav-item">
               <a href="/tienda/producto" class="nav-link"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Productos</a>
             </li>
@@ -53,7 +57,7 @@
 			</li>
 			@endif
             <li class="nav-item">
-              <a class="nav-link"href="/tienda/estadisticas" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i> Estadisticas</a>
+              <a class="nav-link" href="/tienda/estadisticas" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i> Estadisticas</a>
             </li>
             <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,7 +65,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <p class="dropdown-item">{{ Auth::user()->name }}</p>
-                <a class="dropdown-item" href="portfolio-2-col.html"><i class="fa fa-user"></i> Mi Perfil</i></a>
+                <a class="dropdown-item" href="{{url('tienda/empresa')}}"><i class="fa fa-user"></i> Mi Perfil</i></a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i> Cerrar Sesión
                 </a>
