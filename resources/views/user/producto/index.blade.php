@@ -33,8 +33,8 @@
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
-                <span><button type="button" onclick="megusta(this)" id="{{$pro->pro_id}}" class="btn btn-block btn-info"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ({{$pro->pro_megusta}}) </button></span>
-                <span><button type="button" onclick="nomegusta(this)" id="{{$pro->pro_id}}" class="btn btn-block btn-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ({{$pro->pro_nomegusta}})</button></span>
+                <span><button type="button" onclick="megusta(this)" data="{{$pro->pro_megusta}}" id="{{$pro->pro_id}}" class="btn btn-block btn-info"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ({{$pro->pro_megusta}}) </button></span>
+                <span><button type="button" onclick="nomegusta(this)" data="{{$pro->pro_nomegusta}}" id="{{$pro->pro_id}}" class="btn btn-block btn-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ({{$pro->pro_nomegusta}})</button></span>
             </div>
         </div>
     </div>
@@ -110,11 +110,14 @@ function changefavorite(e) {
 }
 function megusta(e) {
     var id_prod = $(e).attr('id');
-    alert(id_prod);
+    var cant = $(e).attr('data');
+    var mostrar = parseInt(cant)+1;
+    $(e).html('<i style="font-size: 22px;" class="fa fa-thumbs-up" aria-hidden="true"></i> ('+ mostrar +')');
 }
 function nomegusta(e) {
     var id_prod = $(e).attr('id');
-    alert(id_prod);
+    var cant = $(e).attr('data');
+    alert(id_prod+" => "+cant);
 }
 </script>
 {{$productos->render()}}

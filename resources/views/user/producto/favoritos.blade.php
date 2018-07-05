@@ -98,6 +98,11 @@ function changefavorite(e) {
         document.cookie = "id=" + seleccion + ";" + expires + ";path=/";
         var ocultar = "#"+id_prod;
         $(ocultar).hide("slow");
+
+        if (captura_id.length == 1){
+            $('.msj_fav').css('visibility', 'visible');
+            $('.msj_fav').css('display', 'inline');
+        }
     }
 }
 function megusta(e) {
