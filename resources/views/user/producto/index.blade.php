@@ -83,14 +83,25 @@ function changefavorite(e) {
     //guardar cookies y agregar efecto corazón
     if (catureclass == "favorite fa fa-heart-o") {
         $(e).addClass("fa-heart").removeClass("fa-heart-o");
-        var guardar_id = id_values+","+id_prod;
-        document.cookie = "id=" + guardar_id + ";" + expires + ";path=/";
+        if (id_values == '' || id_values == 'undefined') {
+            var guardar_id = id_prod;
+            document.cookie = "id=" + guardar_id + ";" + expires + ";path=/";
+
+        }else{
+            var guardar_id = id_values+","+id_prod;
+            document.cookie = "id=" + guardar_id + ";" + expires + ";path=/";
+        } 
     }else{//eliminar id de cookies y agregar efecto corazón
         $(e).addClass("fa-heart-o").removeClass("fa-heart");
         var captura_id = id_values.split(",");
         var seleccion;
+        var entrada = 1;
         for (var i in captura_id) {
-            if(captura_id[i] != id_prod){
+            if(entrada == 1 && captura_id[i] != id_prod && captura_id[i] != 'undefined'){
+                seleccion = captura_id[i];
+                entrada=0;
+            }
+            else if(captura_id[i] != id_prod && captura_id[i] != 'undefined'){
                 seleccion = seleccion+","+captura_id[i];
             }
         }
