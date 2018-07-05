@@ -46,8 +46,10 @@
         var id_values = document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         var captura_id = id_values.split(",");
         for (var i in captura_id) {
-            var e = "#"+captura_id[i];
-            $(e).addClass("fa-heart").removeClass("fa-heart-o");
+            if(captura_id[i] != ""){
+                var e = "#"+captura_id[i];
+                $(e).addClass("fa-heart").removeClass("fa-heart-o");
+            }    
         }
     </script>
 </div>
