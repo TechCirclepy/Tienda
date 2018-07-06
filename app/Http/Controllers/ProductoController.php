@@ -84,7 +84,7 @@ class ProductoController extends Controller
 		if($producto->save()) {
 			return redirect('/tienda/producto')->with('agregar-producto', 'Producto agregado correctamente!'); 
 		} else {
-			return Redirect::to('tienda/producto/create');
+			return view("tienda.producto.create", ["producto" => $producto]);
 		}
 	}
     public function show($id) {
