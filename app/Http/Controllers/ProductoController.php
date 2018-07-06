@@ -3,7 +3,7 @@
 namespace Tienda\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Image;
 use Tienda\Http\Requests;
 use Tienda\Producto;
 use Tienda\User;
@@ -63,13 +63,14 @@ class ProductoController extends Controller
 		$producto->pro_precio=$request->get('pro_precio');
 		$producto->pro_oferta=$request->get('pro_oferta');
 		$producto->pro_ofer_active=$request->get('pro_ofer_active');
-		
 		if(Input::hasFile('pro_foto')) {
 			$file=Input::file('pro_foto');
-			$file->move(public_path().'/imagenes/productos/',$file->getClientOriginalName());
+
+			Image::make($request->file('pro_foto'))
+				->resize(144, 145)
+				->save(public_path().'/imagenes/productos/' . $file->getClientOriginalName());
 			$producto->pro_foto=$file->getClientOriginalName();
 		}
-		
 		$producto->pro_nomegusta = 0;
 		$producto->pro_megusta = 0;
 		$producto->pro_denuncia = 0;
@@ -108,7 +109,10 @@ class ProductoController extends Controller
 		
 		if(Input::hasFile('pro_foto')) {
 			$file=Input::file('pro_foto');
-			$file->move(public_path().'/imagenes/productos/',$file->getClientOriginalName());
+
+			Image::make($request->file('pro_foto'))
+				->resize(144, 145)
+				->save(public_path().'/imagenes/productos/' . $file->getClientOriginalName());
 			$producto->pro_foto=$file->getClientOriginalName();
 		}
 		

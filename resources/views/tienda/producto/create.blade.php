@@ -15,7 +15,7 @@
 			</div>
 			@endif
 
-{!! Form::open(array('url'=>'tienda/producto','method'=>'POST','autocomplete'=>'off','files'=>'true')) !!}
+{!! Form::open(array('url'=>'tienda/producto','method'=>'POST', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off','files'=>'true')) !!}
 			{{Form::token()}}
 			<div class="contacto">
 			<div class="form-group">
