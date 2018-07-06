@@ -19,17 +19,17 @@
 			{{Form::token()}}
 			<div class="form-group">
 				<br /><label for="Nombre">Nombre</label>
-				<input type="text" name="name" class="form-control" value="{{$empresa->name}}" />
+				<input type="text" name="name" class="form-control" value="{{$empresa->name}}"  required />
 			</div>
 			@if (Auth::user()->admin==1)
 			<div class="form-group">
 				<label for="Oferta_activada">Es un administrador</label><br />
 				@if ($empresa->admin==1)
-                	<input type="radio" name="admin" value="1" checked> Si 
-  					<input type="radio" name="admin" value="0"> No<br>
+                	<input type="radio" name="admin" value="1" checked required > Si 
+  					<input type="radio" name="admin" value="0" required > No<br>
 				@else
-					<input type="radio" name="admin" value="1"> Si 
-  					<input type="radio" name="admin" value="0" checked> No<br>
+					<input type="radio" name="admin" value="1" required > Si 
+  					<input type="radio" name="admin" value="0" checked required > No<br>
 				@endif
   			</div>
   			@endif
@@ -45,29 +45,29 @@
 			-->
 			<div class="form-group">
 				<label for="imagen">Logotipo</label>
-				<input type="file" name="foto" value="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="form-control">
+				<input type="file" name="foto" value="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="form-control" accept="image/jpeg, image/png, image/bmp"  required>
 				<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" alt="" style="width: 100px;" />
 			</div>
 			<div class="form-group">
 				<label for="Descripción">Descripción</label>
-				<textarea maxlength="200" name="descripcion" class="form-control">{{$empresa->descripcion}}</textarea>
+				<textarea maxlength="200" name="descripcion" class="form-control" required>{{$empresa->descripcion}}</textarea>
 			</div>
 			<div class="form-group">
 				<label for="Dirección">Dirección</label>
-				<input type="text" name="direccion" class="form-control" value="{{$empresa->direccion}}" />
+				<input type="text" name="direccion" class="form-control" value="{{$empresa->direccion}}" required />
 			</div>
 			<div class="form-group">
 				<label for="Celular">Celular</label>
-				<input type="phone" name="cel" class="form-control" onkeypress="return permite(event, 'num')" value="{{$empresa->cel}}" />
+				<input type="phone" name="cel" class="form-control" onkeypress="return permite(event, 'num')" value="{{$empresa->cel}}" required />
 			</div>
 			<div class="form-group">
 				<label for="ciudad">Ciudad</label>
-				<select name="ciudad_ciu_id" class="form-control">
+				<select name="ciudad_ciu_id" class="form-control" required>
 						@foreach($ciudads as $ciu)
 							@if ($ciu->ciu_id==$empresa->ciudad_ciu_id)
-		                    	<option value="{{$ciu->ciu_id}}" selected>{{$ciu->ciu_nom}}</option>
+		                    	<option value="{{$ciu->ciu_id}}" selected required>{{$ciu->ciu_nom}}</option>
 							@else
-								<option value="{{$ciu->ciu_id}}">{{$ciu->ciu_nom}}</option>
+								<option value="{{$ciu->ciu_id}}" required>{{$ciu->ciu_nom}}</option>
 							@endif
 						@endforeach
 				</select>
