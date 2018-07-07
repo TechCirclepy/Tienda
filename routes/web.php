@@ -13,7 +13,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('prueba', 'ReporteProductoController@sendEmail');
 Route::get('mail', 'MailController@index');//contactos
 Route::post('postmail', 'MailController@post');//contactos
 Route::post('postreporte', 'ReporteProductoController@store');//reporte de productos
