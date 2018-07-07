@@ -45,7 +45,7 @@
 			-->
 			<div class="form-group">
 				<label for="imagen">Logotipo</label>
-				<input type="file" name="foto" value="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="form-control" accept="image/jpeg, image/png, image/bmp"  required>
+				<input type="file" name="foto" value="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="form-control" accept="image/jpeg, image/png, image/bmp">
 				<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" alt="" style="width: 100px;" />
 			</div>
 			<div class="form-group">

@@ -37,7 +37,7 @@
 			</div>
 			<div class="form-group">
 				<label for="imagen">Logotipo</label>
-				<input type="file" name="foto" class="form-control" accept="image/jpeg, image/png, image/bmp" required >
+				<input type="file" name="foto" class="form-control" accept="image/jpeg, image/png, image/bmp" >
 			</div>
 			<div class="form-group">
 				<label for="Descripción">Descripción</label>

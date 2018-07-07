@@ -41,7 +41,7 @@
 			</div>
 			<div class="form-group">
 				<label for="imagen">Producto</label>
-				<input type="file" name="pro_foto" class="form-control" required accept="image/jpeg, image/png, image/bmp">
+				<input type="file" name="pro_foto" class="form-control" accept="image/jpeg, image/png, image/bmp">
 			</div>
 			<div class="form-group">
 				<label for="Categoria">Categoria</label>

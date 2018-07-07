@@ -40,18 +40,22 @@
                <a class="nav-link" href="{{ url('mail') }}">Contacto</a>
             </li>
             @guest
+
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">Ingresar</a>
             </li>
             @else
+            <li class="nav-item">
+               <a class="nav-link" href="{{ url('/tienda/producto') }}">Administracion</a>
+            </li>
             <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">Agregar Articulo</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Mensajes (0)</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Estadisticas</a>
+                <a class="dropdown-item" href="{{url('/tienda/producto/create')}}">Agregar Articulo</a>
+                <a class="dropdown-item" href="{{url('/tienda/mensaje')}}">Mensajes (0)</a>
+                <a class="dropdown-item" href="{{url('/tienda/estadisticas')}}">Estadisticas</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i> Cerrar Sesión
                 </a>
@@ -60,6 +64,7 @@
                 </form>
               </div>
             </li>
+            
             @endguest
           </ul>
         </div>

@@ -49,7 +49,7 @@
 			</div>
 			<div class="form-group">
 				<label for="imagen">Producto</label>
-				<input type="file" name="pro_foto" class="form-control" value="{{$producto->pro_foto}}" accept="image/jpeg, image/png, image/bmp" required >
+				<input type="file" name="pro_foto" class="form-control" value="{{$producto->pro_foto}}" accept="image/jpeg, image/png, image/bmp">
 				<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="img-responsive" alt="" />
 			</div>
 			<div class="form-group">
