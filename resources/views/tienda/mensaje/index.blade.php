@@ -10,6 +10,7 @@
 	  <div class="panel panel-default">
 	  	@foreach($mensajes as $men)
 	  	@if (Auth::user()->admin==1)
+	  		<span>{{$men->empresaid}}</span>
 			<div class="panel-heading" role="tab" id="headingTwo">
 		  		<h4 class="panel-title">
 					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{$men->men_id}}" aria-expanded="false" aria-controls="collapseTwo">
@@ -25,8 +26,8 @@
 					<p style="text-align: right;"><a href="" data-target="#modal-delete-{{$men->men_id}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a></p>
 		  		</div>
 			</div>
-	  	@else
-	  		@if ($men->empresaid==Auth::user()->id)
+	  	@elseif ($men->empresaid==Auth::user()->id)
+	  		<span>{{$men->empresaid}}</span>
 			<div class="panel-heading" role="tab" id="headingOne">
 		  		<h4 class="panel-title">
 					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -42,7 +43,6 @@
 					<p style="text-align: right;"><a href="" data-target="#modal-delete-{{$men->men_id}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a></p>
 		  		</div>
 			</div>
-			@endif
 		@endif	
 		@include('tienda.mensaje.modal')
 		@endforeach
