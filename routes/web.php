@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Http\Request;
+use Tienda\Producto;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,6 +35,19 @@ Route::resource('tienda/mensaje','MensajeController');
 //
 Route::resource('comprar', 'CompraProductoController');
 Auth::routes();
+
+Route::post('user/producto/editmegusta/{producto_id?}', function(Request $request,$producto_id){
+	$producto = Producto::find($producto_id);
+    $producto->pro_megusta = $request->cantidad;
+    $producto->update();
+	return response()->json("Me gusta agrergado");
+});
+Route::post('user/producto/editnomegusta/{producto_id?}', function(Request $request,$producto_id){
+	$producto = Producto::find($producto_id);
+    $producto->pro_nomegusta = $request->cantidad;
+    $producto->update();
+	return response()->json("No me gusta agrergado");
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{slug?}', 'HomeController@index');

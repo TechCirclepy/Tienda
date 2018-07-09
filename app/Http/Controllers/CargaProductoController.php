@@ -59,7 +59,7 @@ class CargaProductoController extends Controller
         return view("tienda.producto.create",["categorias"=>$categorias,"subcategorias"=>$subcategorias,"detalles"=>$detalles,"empresas"=>$empresas,"ciudads"=>$ciudads]);
     }
     public function show($id) {
-         return view("index.vista.show",["producto"=>Producto::findOrFail($id)]);
+         return view("user.producto.show",["producto"=>Producto::findOrFail($id)]);
     }
     public function edit($id) {
         $producto=Producto::findOrFail($id);
@@ -69,7 +69,6 @@ class CargaProductoController extends Controller
         $producto=Producto::findOrFail($id);
         $producto->pro_megusta = $producto->pro_megusta+$request->get('pro_megusta');
         $producto->update();
-        return Redirect::to('index/vista');
     }
     public function destroy($id){
         $categoria=DB::table('producto')->where('pro_id','=',$id)->delete();
