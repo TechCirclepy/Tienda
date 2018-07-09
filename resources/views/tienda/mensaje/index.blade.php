@@ -10,7 +10,6 @@
 	  <div class="panel panel-default">
 	  	@foreach($mensajes as $men)
 	  	@if (Auth::user()->admin==1)
-	  		<span>{{$men->empresaid}}</span>
 			<div class="panel-heading" role="tab" id="headingTwo">
 		  		<h4 class="panel-title">
 					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{$men->men_id}}" aria-expanded="false" aria-controls="collapseTwo">
@@ -27,7 +26,6 @@
 		  		</div>
 			</div>
 	  	@elseif ($men->empresaid==Auth::user()->id)
-	  		<span>{{$men->empresaid}}</span>
 			<div class="panel-heading" role="tab" id="headingOne">
 		  		<h4 class="panel-title">
 					<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
