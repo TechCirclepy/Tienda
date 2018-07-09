@@ -130,6 +130,7 @@ function megusta(e) {
             existe = true;
         }    
     }
+    var seleccion;
     var entrada = 1;
     if (existe == true) {
         for (var i in captura_id) {
@@ -210,6 +211,7 @@ function nomegusta(e) {
             existe = true;
         }    
     }
+    var seleccion;
     var entrada = 1;
     if (existe == true) {
         for (var i in captura_id) {

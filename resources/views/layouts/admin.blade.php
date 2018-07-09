@@ -52,10 +52,10 @@
 					<a class="dropdown-item" href="/tienda/detalle">Subcategorias - detalle</a>
 				</div>
             </li>
+            @endif
             <li class="nav-item">
 				<a class="nav-link" href="/tienda/mensaje"><i class="fa fa-envelope nav_icon"></i> Mensajes</a>
 			</li>
-			@endif
             <li class="nav-item">
               <a class="nav-link" href="/tienda/estadisticas" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i> Estadisticas</a>
             </li>

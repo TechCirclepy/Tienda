@@ -59,9 +59,9 @@
                 {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">Agregar Articulo</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Mensajes (0)</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Estadisticas</a>
+                <a class="dropdown-item" href="/tienda/producto/create">Agregar Articulo</a>
+                <a class="dropdown-item" href="/tienda/mensaje">Mensajes (0)</a>
+                <a class="dropdown-item" href="/tienda/estadisticas">Estadisticas</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i> Cerrar Sesión
                 </a>
