@@ -65,6 +65,7 @@
 					</td>
 					<td>
 						<a href="{{URL::action('EmpresaController@edit',$empresa->id)}}"><button class="btn btn-info">Editar</button></a>
+						<!--cambiar pass -->
 						<a href="{{URL::action('EmpresaPassController@edit',$empresa->id)}}"><button class="btn btn-warning">Cambiar contraseña</button></a>
 					</td>
 				</tr>
