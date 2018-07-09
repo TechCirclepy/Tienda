@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('contenido')
-	
+{{--	
 	<script>
 		var productos = 0;
 		var megusta = 0;
@@ -58,5 +58,90 @@
 			<strong>Cantidad de No me gusta:</strong> <script>document.write(nomegusta)</script>
 		</div>
 	</div>
-    </div>	
+    </div>
+--}}
+    <h1 class="text-center">Los 5 productos con mas "me gusta"</h1>
+    @if (Auth::user()->admin==1)
+    <div class="container">
+	    <div class="row">
+		    @foreach($productsAdminMeGusta as $product)
+			    <div class="col-lg-3 col-sm-3 portfolio-item">
+			        <div class="card h-100">
+			            <a href="#">
+			                <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$product->pro_foto)}}" style="width: 253px; height: 150px;">
+			            </a>
+			            <div class="card-body">
+			                <h4 class="card-title">
+			                    {{$product->pro_nom}}
+			                </h4>
+			                <p class="card-text">Cantidad de Me gusta: {{$product->pro_megusta}}</p>
+			            </div>
+			        </div>
+			    </div>
+			@endforeach
+	    </div>
+    </div>
+    @else
+    <div class="container">
+	    <div class="row">
+		    @foreach($products as $product)
+			    <div class="col-lg-3 col-sm-3 portfolio-item">
+			        <div class="card h-100">
+			            <a href="#">
+			                <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$product->pro_foto)}}" style="width: 253px; height: 150px;">
+			            </a>
+			            <div class="card-body">
+			                <h4 class="card-title">
+			                    {{$product->pro_nom}}
+			                </h4>
+			                <p class="card-text">Cantidad de Me gusta: {{$product->pro_megusta}}</p>
+			            </div>
+			        </div>
+			    </div>
+			@endforeach
+	    </div>
+    </div>
+    @endif
+    <h1 class="text-center">Los 5 productos con mas "no me gusta"</h1>
+    @if (Auth::user()->admin==1)
+    <div class="container">
+	    <div class="row">
+		    @foreach($productsAdminNoMeGusta as $product)
+			    <div class="col-lg-3 col-sm-3 portfolio-item">
+			        <div class="card h-100">
+			            <a href="#">
+			                <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$product->pro_foto)}}" style="width: 253px; height: 150px;">
+			            </a>
+			            <div class="card-body">
+			                <h4 class="card-title">
+			                    {{$product->pro_nom}}
+			                </h4>
+			                <p class="card-text">Cantidad de no me gusta: {{$product->pro_nomegusta}}</p>
+			            </div>
+			        </div>
+			    </div>
+			@endforeach
+	    </div>
+    </div>
+    @else
+    <div class="container">
+	    <div class="row">
+		    @foreach($productsN as $product)
+			    <div class="col-lg-3 col-sm-3 portfolio-item">
+			        <div class="card h-100">
+			            <a href="#">
+			                <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$product->pro_foto)}}" style="width: 253px; height: 150px;">
+			            </a>
+			            <div class="card-body">
+			                <h4 class="card-title">
+			                    {{$product->pro_nom}}
+			                </h4>
+			                <p class="card-text">Cantidad de no me gusta: {{$product->pro_nomegusta}}</p>
+			            </div>
+			        </div>
+			    </div>
+			@endforeach
+	    </div>
+    </div>
+    @endif
 @endsection

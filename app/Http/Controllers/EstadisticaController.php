@@ -3,7 +3,7 @@
 namespace Tienda\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Tienda\Http\Requests;
 use Tienda\Producto;
 use Tienda\User;
@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Tienda\Http\Requests\ProductoFormRequest;
 use DB;
-
 use Response;
 use Illuminate\Support\Colletion;
 
@@ -26,6 +25,7 @@ class EstadisticaController extends Controller
 
     public function index(Request $request) {
         if ($request){
+            /*
          	$query=trim($request->get('searchText'));
          	$productos=DB::table('producto as p')
          	->join('categoria as c','p.categoria_cat_id','=','c.cat_id')
@@ -37,7 +37,21 @@ class EstadisticaController extends Controller
          	->where('p.pro_nom','LIKE','%'.$query.'%')
          	->orderBy('p.pro_id','desc')
          	->paginate(7);
-         	return view('tienda.estadisticas.index', ['productos' => $productos,"searchText"=>$query]);
+            */
+            /* */
+            //Obtiene los 5 productos con mas me gusta7
+            $id = Auth::id();
+            $products = Producto::where('users_id', '=', $id)
+                                ->orderBy('pro_megusta', 'desc')
+                                ->limit(5)
+                                ->get();
+            $productsN = Producto::where('users_id', '=', $id)
+                                ->orderBy('pro_nomegusta', 'desc')
+                                ->limit(5)
+                                ->get();
+            $productsAdminMeGusta = Producto::orderBy('pro_megusta', 'desc')->limit(5)->get();
+            $productsAdminNoMeGusta = Producto::orderBy('pro_nomegusta', 'desc')->limit(5)->get();                   
+         	return view('tienda.estadisticas.index', compact('products', 'productsN', 'productos', 'productsAdminMeGusta', 'productsAdminNoMeGusta'));
          }
     }
 }
