@@ -12,6 +12,7 @@
 */
 use Illuminate\Http\Request;
 use Tienda\Producto;
+use Tienda\Mensaje;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +48,13 @@ Route::post('user/producto/editnomegusta/{producto_id?}', function(Request $requ
     $producto->pro_nomegusta = $request->cantidad;
     $producto->update();
 	return response()->json("No me gusta agrergado");
+});
+
+Route::post('tienda/leido/{producto_id?}', function(Request $request,$producto_id){
+	$mensaje = Mensaje::find($producto_id);
+    $mensaje->leido = $request->cantidad;
+    $mensaje->update();
+	return response()->json("listo");
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
