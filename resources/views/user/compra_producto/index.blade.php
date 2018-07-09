@@ -26,13 +26,11 @@
                 @endif
                   <h4><a id="pro_nom" href="#">{{$producto->pro_nom}}</a></h4>
                   <p id="pro_info" >{{$producto->pro_info}}</p>
-                  <p>{{$producto->users_id}}</p>
                   <script>
                     var user_id = "{{$producto->users_id}}";
-                    alert('{{$producto->users_id}}');
+                    //alert('{{$producto->users_id}}');
                     user_id = document.getElementsByName("users_id")[0].value = user_id;
                   </script>
-
                 @foreach($empresas as $empresa)
                   @if($empresa->id == $producto->users_id)
                     <p id="pro_empresa">Tienda: {{$empresa->name}}</p>
