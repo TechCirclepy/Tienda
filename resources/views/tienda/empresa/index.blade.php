@@ -44,12 +44,13 @@
 				</td>
 				<td>
 					<a href="{{URL::action('EmpresaController@edit',$empresa->id)}}"><button class="btn btn-info">Editar</button></a>
+					<a href="{{URL::action('EmpresaPassController@edit',$empresa->id)}}"><button class="btn btn-warning">Cambiar contraseña</button></a>
 					@if ($empresa->activo==1)
 						<a href="" data-target="#modal-delete-{{$empresa->id}}" data-toggle="modal"><button class="btn btn-danger">Desactivar</button></a>
 					@else
 						<a href="" data-target="#modal-delete-{{$empresa->id}}" data-toggle="modal"><button class="btn btn-success">Activar</button></a>
 					@endif
-					<a href="{{URL::action('EmpresaPassController@edit',$empresa->id)}}"><button class="btn btn-warning">Cambiar contraseña</button></a>
+					
 				</td>
 			</tr>
 		@else 
