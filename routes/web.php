@@ -16,7 +16,6 @@ use Tienda\Producto;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('prueba', 'ReporteProductoController@sendEmail');
 Route::get('mail', 'MailController@index');//contactos
 Route::post('postmail', 'MailController@post');//contactos
 Route::post('postreporte', 'ReporteProductoController@store');//reporte de productos
@@ -26,6 +25,7 @@ Route::get('user/producto/favoritos','CargaFavoritosController@listar'); //carga
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/empresa','EmpresaController');
 Route::resource('info-empresa','EmpresaInfoController');
+Route::resource('cambiar-pass','EmpresaPassController');
 Route::resource('tienda/producto','ProductoController');
 Route::resource('tienda/subcategoria','SubCategoriaController');
 Route::resource('tienda/detalle','CatDetalleController');

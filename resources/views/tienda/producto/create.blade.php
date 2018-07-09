@@ -15,37 +15,37 @@
 			</div>
 			@endif
 
-{!! Form::open(array('url'=>'tienda/producto','method'=>'POST','autocomplete'=>'off','files'=>'true')) !!}
+{!! Form::open(array('url'=>'tienda/producto','method'=>'POST', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off','files'=>'true')) !!}
 			{{Form::token()}}
 			<div class="contacto">
 			<div class="form-group">
 				<br /><label for="Nombre">Nombre</label>
-				<input type="text" name="pro_nom" maxlength="45" class="form-control" placeholder="Nombre del producto" />
+				<input type="text" name="pro_nom" maxlength="45" class="form-control" placeholder="Nombre del producto"  required />
 			</div>
 			<div class="form-group">
 				<label for="Descripción">Información</label>
-				<textarea maxlength="200" name="pro_info" class="form-control" placeholder="Detalla brevemente el producto"></textarea>
+				<textarea maxlength="200" name="pro_info" class="form-control" placeholder="Detalla brevemente el producto" required ></textarea>
 			</div>
-			<div class="form-group">
+			<div class="form-group" id="precio">
 				<label for="precio">Precio</label>
-				<input type="number" maxlength="11" min="50" max="99999999" onkeypress="return permite(event, 'num')" name="pro_precio" class="form-control" placeholder="Precio" />
+				<input id="price" type="number" maxlength="11" min="50" max="99999999" onkeypress="return permite(event, 'num')" name="pro_precio" class="form-control" placeholder="Precio" required  />
 			</div>
 			<div class="form-group">
 				<label for="Oferta_activada">Oferta activa</label><br />
-				<input type="radio" name="pro_ofer_active" onclick="pro_oferta.disabled = false" value="1" checked> Si 
-  				<input type="radio" name="pro_ofer_active" onclick="pro_oferta.disabled = true" value="0"> No<br>
+				<input type="radio" name="pro_ofer_active" onclick="pro_oferta.disabled = false" value="1" checked required > Si 
+  				<input type="radio" name="pro_ofer_active" onclick="pro_oferta.disabled = true" value="0" required > No<br>
   			</div>
-  			<div class="form-group">
+  			<div class="form-group" id="precio">
 				<label for="precio_oferta">Precio Oferta</label>
-				<input type="number" maxlength="11" min="50" max="99999999" onkeypress="return permite(event, 'num')" name="pro_oferta" class="form-control" placeholder="Precio de oferta" />
+				<input id="price" type="number" maxlength="11" min="50" max="99999999" onkeypress="return permite(event, 'num')" name="pro_oferta" class="form-control" placeholder="Precio de oferta" required  />
 			</div>
 			<div class="form-group">
 				<label for="imagen">Producto</label>
-				<input type="file" name="pro_foto" class="form-control">
+				<input type="file" name="pro_foto" class="form-control" accept="image/jpeg, image/png, image/bmp">
 			</div>
 			<div class="form-group">
 				<label for="Categoria">Categoria</label>
-				<select name="categoria_cat_id" class="form-control" id="select-categoria">
+				<select name="categoria_cat_id" class="form-control" id="select-categoria" required accept="image/gif, image/jpeg, image/png">
 						<option value="">Seleccione Categoria</option>
 						@foreach($categorias as $cat)
 							<option value="{{$cat->cat_id}}">{{$cat->cat_nom}}</option>
@@ -54,25 +54,25 @@
 			</div>
 			<div class="form-group">
 				<label for="SubCategoria">SubCategoria</label>
-				<select name="subcategoria_sub_id" class="form-control" id="select-subcategoria">
+				<select name="subcategoria_sub_id" class="form-control" id="select-subcategoria" required accept="image/gif, image/jpeg, image/png">
 						<option value="">Seleccione Subcategoria</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="Categoria">SubCategoria - Detalla</label>
-				<select name="categoriadetalle_det_id" class="form-control" id="select-subcategoria-detalle">
+				<select name="categoriadetalle_det_id" class="form-control" id="select-subcategoria-detalle" required accept="image/gif, image/jpeg, image/png">
 						<option value="">Seleccione Subcategoria - detalle</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="empresa">Empresa</label>
-				<select name="users_id" class="form-control">
+				<select name="users_id" class="form-control" required accept="image/gif, image/jpeg, image/png">
 					<option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="ciudad">Ciudad</label>
-				<select name="ciudad_ciu_id" class="form-control">
+				<select name="ciudad_ciu_id" class="form-control" required accept="image/gif, image/jpeg, image/png">
 					@foreach($ciudads as $ciu)
 						@if ($ciu->ciu_id==Auth::user()->ciudad_ciu_id)
 							<option value="{{Auth::user()->ciudad_ciu_id}}">{{$ciu->ciu_nom}}</option>
@@ -86,6 +86,11 @@
 			</div>
 			{!!Form::close()!!}
 		</div>
+		<script>
+			$(function() {
+			  $('#precio').on('keydown', '#price', function(e){-1!==$.inArray(e.keyCode,[46,8,9,27,13,110])||(/65|67|86|88/.test(e.keyCode)&&(e.ctrlKey===true||e.metaKey===true))&&(!0===e.ctrlKey||!0===e.metaKey)||35<=e.keyCode&&40>=e.keyCode||(e.shiftKey||48>e.keyCode||57<e.keyCode)&&(96>e.keyCode||105<e.keyCode)&&e.preventDefault()});
+			})
+		</script>
 		<script src="{{asset('js/multiselect.js')}}"></script>
 	</div>
 	</div>

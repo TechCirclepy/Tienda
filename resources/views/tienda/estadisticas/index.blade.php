@@ -47,7 +47,6 @@
 			@endif
 		@endforeach
 	@endif
-
 	<div class="row">
 		<div class="alert alert-success col-lg-4 col-md-4 col-sm-12 col-xs-12">
 			<strong>Cantidad de Productos:</strong> <script>document.write(productos)</script>
@@ -59,5 +58,5 @@
 			<strong>Cantidad de No me gusta:</strong> <script>document.write(nomegusta)</script>
 		</div>
 	</div>
-		
+    </div>	
 @endsection

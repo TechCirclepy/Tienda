@@ -3,7 +3,7 @@
 namespace Tienda\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Image;
 use Tienda\Http\Requests;
 use Tienda\User;
 use Tienda\Ciudad;
@@ -48,13 +48,13 @@ class EmpresaController extends Controller
 		$empresa->direccion=$request->get('direccion');
 		$empresa->cel=$request->get('cel');
 		$empresa->email=$request->get('email');
-		
-		if (Input::hasFile('foto')) {
-			$file=Input::file('foto');
-			$file->move(public_path().'/imagenes/empresas/',$file->getClientOriginalName());
-			$empresa->foto=$file->getClientOriginalName();
-		}
-
+        if(Input::hasFile('foto')) {
+            $file=Input::file('foto');
+            Image::make($request->file('foto'))
+                ->resize(144, 145)
+                ->save(public_path().'/imagenes/empresas/' . $file->getClientOriginalName());
+            $empresa->foto=$file->getClientOriginalName();
+        }
 		$empresa->activo='1';
 		$empresa->admin=$request->get('admin');
 		$empresa->ciudad_ciu_id=$request->get('ciudad_ciu_id');
@@ -72,20 +72,22 @@ class EmpresaController extends Controller
     public function update(EmpresaFormRequest $request,$id) {
         $empresa=User::findOrFail($id);
 		$empresa->name=$request->get('name');
-		$empresa->password=bcrypt($request->get('password'));
+		//$empresa->password=bcrypt($request->get('password'));
 		$empresa->descripcion=$request->get('descripcion');
 		$empresa->direccion=$request->get('direccion');
 		$empresa->cel=$request->get('cel');
 		
-		if (Input::hasFile('foto')) {
-			$file=Input::file('foto');
-			$file->move(public_path().'/imagenes/empresas/',$file->getClientOriginalName());
-			$empresa->foto=$file->getClientOriginalName();
-		}
+		if(Input::hasFile('foto')) {
+            $file=Input::file('foto');
+            Image::make($request->file('foto'))
+                ->resize(144, 145)
+                ->save(public_path().'/imagenes/empresas/' . $file->getClientOriginalName());
+            $empresa->foto=$file->getClientOriginalName();
+        }
 		$empresa->admin=$request->get('admin');
 		$empresa->ciudad_ciu_id=$request->get('ciudad_ciu_id');
 		$empresa->update();
-		return Redirect::to('tienda/empresa');
+		return redirect('/tienda/empresa')->with('editado', 'Empresa editada correctamente!');
     }
     public function destroy($id){
     	$empresa=User::findOrFail($id);
