@@ -40,7 +40,7 @@
 							height: 40px !important;; 
 						}
 					</style>
-						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="estilo img-responsive"/>
+						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="estilo img-responsive" style="width: 80px; height: 80px;"/>
 					</td>
 					<th>-> {{$producto->categoria}}<br />
 						-> {{$producto->subcategoria}}<br />
@@ -76,7 +76,7 @@
 						@endif
 					</td>
 					<td>
-						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="img-responsive" alt="" />
+						<img src="{{asset('imagenes/productos/'.$producto->pro_foto)}}" class="img-responsive" alt="" style="width: 100px;"/>
 					</td>
 					<th>-> {{$producto->categoria}}<br />
 						-> {{$producto->subcategoria}}<br />

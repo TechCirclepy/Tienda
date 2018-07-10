@@ -40,7 +40,7 @@
 				<td>{{$empresa->cel}}</td>
 				<td>{{$empresa->email}}</td>
 				<td>
-					<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" height="200px" alt="" style="width: 50px; height: 50px;" />
+					<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" alt="" style="width: 80px; height: 80px;" />
 				</td>
 				<td>
 					<a href="{{URL::action('EmpresaController@edit',$empresa->id)}}"><button class="btn btn-info">Editar</button></a>
@@ -61,7 +61,7 @@
 					<td>{{$empresa->cel}}</td>
 					<td>{{$empresa->email}}</td>
 					<td>
-						<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" class="img-responsive" alt="" />
+						<img src="{{asset('imagenes/empresas/'.$empresa->foto)}}" style="width: 80px; height: 80px;" class="img-responsive" alt="" />
 					</td>
 					<td>
 						<a href="{{URL::action('EmpresaController@edit',$empresa->id)}}"><button class="btn btn-info">Editar</button></a>

@@ -32,6 +32,8 @@
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
+    <script src="{{ asset('js/favorite.js') }}"></script>
+    <script src="{{ asset('js/likes.js') }}"></script>
     <script src="{{ asset('js/alertify.min.js') }}"></script>
     <script type="text/javascript">
         //override defaults

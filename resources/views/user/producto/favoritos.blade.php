@@ -33,8 +33,8 @@
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
-                <span><button type="button" onclick="megusta(this)" id="{{$pro->pro_id}}" class="btn btn-block btn-info"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ({{$pro->pro_megusta}}) </button></span>
-                <span><button type="button" onclick="nomegusta(this)" id="{{$pro->pro_id}}" class="btn btn-block btn-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ({{$pro->pro_nomegusta}})</button></span>
+                <span><button type="button" onclick="megusta(this)" data="{{$pro->pro_megusta}}" id="{{$pro->pro_id}}" class="btn btn-block btn-info"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ({{$pro->pro_megusta}}) </button></span>
+                <span><button type="button" onclick="nomegusta(this)" data="{{$pro->pro_nomegusta}}" id="{{$pro->pro_id}}" class="btn btn-block btn-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ({{$pro->pro_nomegusta}})</button></span>
             </div>
         </div>
     </div>
@@ -59,61 +59,6 @@
     </script>
 </div>
 @include('user.producto.modal-reporte')
-<script>
-//script de favoritos
-function changefavorite(e) {
-    var catureclass = $(e).attr('class'); // catura de la clase para comparar
-    var id_prod = $(e).attr('id'); // extracción del id
-    //datos para guardar cookies
-    var d = new Date();
-    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    //capturas de ids contenidos en la cookies con la clave id
-    var id_values = document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    
-    //guardar cookies y agregar efecto corazón
-    if (catureclass == "favorite fa fa-heart-o") {
-        $(e).addClass("fa-heart").removeClass("fa-heart-o");
-        if (id_values == 'undefined') {
-            var guardar_id = id_prod;
-            document.cookie = "id=" + guardar_id + ";" + expires + ";path=/";
-        }else{
-            var guardar_id = id_values+","+id_prod;
-            document.cookie = "id=" + guardar_id + ";" + expires + ";path=/";
-        } 
-    }else{//eliminar id de cookies y agregar efecto corazón
-        $(e).addClass("fa-heart-o").removeClass("fa-heart");
-        var captura_id = id_values.split(",");
-        var seleccion;
-        var entrada = 1;
-        for (var i in captura_id) {
-            if(entrada == 1 && captura_id[i] != id_prod && captura_id[i] != 'undefined'){
-                seleccion = captura_id[i];
-                entrada=0;
-            }
-            else if(captura_id[i] != id_prod && captura_id[i] != 'undefined'){
-                seleccion = seleccion+","+captura_id[i];
-            }
-        }
-        document.cookie = "id=" + seleccion + ";" + expires + ";path=/";
-        var ocultar = "#"+id_prod;
-        $(ocultar).hide("slow");
-
-        if (captura_id.length == 1){
-            $('.msj_fav').css('visibility', 'visible');
-            $('.msj_fav').css('display', 'inline');
-        }
-    }
-}
-function megusta(e) {
-    var id_prod = $(e).attr('id');
-    alert(id_prod);
-}
-function nomegusta(e) {
-    var id_prod = $(e).attr('id');
-    alert(id_prod);
-}
-</script>
 {{$productos->render()}}
 @endsection
 

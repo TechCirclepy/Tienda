@@ -30,7 +30,7 @@
 	<div class="row">
         @foreach($productos as $pro)
         @if ($pro->users_id == $empresaID)
-		<div class="col-lg-3 col-sm-3 portfolio-item" id="{{$pro->pro_id}}">
+		<div class="col-lg-3 col-sm-3 portfolio-item">
         <div class="card h-100">
             <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart-o" style="font-size:30px;"></i>
             <a href="#">
@@ -64,8 +64,8 @@
             </div>
             <div class="btn-group" style="margin: auto;">
                 <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
-                <span><button type="button" onclick="megusta(this)" id="{{$pro->pro_id}}" class="btn btn-block btn-info"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ({{$pro->pro_megusta}}) </button></span>
-                <span><button type="button" onclick="nomegusta(this)" id="{{$pro->pro_id}}" class="btn btn-block btn-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ({{$pro->pro_nomegusta}})</button></span>
+                <span><button type="button" onclick="megusta(this)" data="{{$pro->pro_megusta}}" id="{{$pro->pro_id}}" class="btn btn-block btn-info"><i class="fa fa-thumbs-up" aria-hidden="true"></i> ({{$pro->pro_megusta}}) </button></span>
+                <span><button type="button" onclick="nomegusta(this)" data="{{$pro->pro_nomegusta}}" id="{{$pro->pro_id}}" class="btn btn-block btn-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> ({{$pro->pro_nomegusta}})</button></span>
             </div>
         </div>
     </div>
@@ -73,7 +73,9 @@
 @endforeach
 @include('user.producto.modal-reporte')
 	</div>	
-
+<script>
+    cargafavorite();
+</script>
 <a type="button" href="javascript:history.go(-1)" class="btn btn-default">Atras</a>
 @include('user.producto.modal')
 @endsection
