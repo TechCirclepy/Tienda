@@ -93,3 +93,10 @@ body {
     border-left: none;
     height: 300px;
 }
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  top: 0px;
+  position: absolute;
+}
