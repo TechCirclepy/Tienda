@@ -30,7 +30,7 @@ class MensajeController extends Controller
          	->select('m.men_id','m.nombre','m.celular','m.mensaje','m.ciudad','m.leido','u.name as empresa','u.id as empresaid','p.pro_nom as producto','p.pro_id as pro_id','p.pro_foto as pro_foto')
          	->where('m.nombre','LIKE','%'.$query.'%')
          	->orwhere('p.pro_nom','LIKE','%'.$query.'%')
-         	->orderBy('p.pro_id','desc')
+         	->orderBy('p.pro_id','asd')
          	->paginate(7);
          	return view('tienda.mensaje.index', ['mensajes' => $mensajes,"searchText"=>$query]);
          }

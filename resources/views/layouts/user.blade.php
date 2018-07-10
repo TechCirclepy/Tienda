@@ -9,6 +9,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Fashion Cordillera</title>
+    <?php
+        use Tienda\Mensaje;
+        $mensajes = Mensaje::all();
+    ?>
+    <script>
+        var cantidad = 0;
+    </script>
+    @foreach($mensajes as $men) 
+        @if ($men->leido==0)
+            <script>
+                cantidad += 1;
+            </script>
+        @endif
+    @endforeach
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -55,16 +69,14 @@
               <a class="nav-link" href="{{ route('login') }}">Ingresar</a>
             </li>
             @else
-            <li class="nav-item">
-               <a class="nav-link" href="{{ url('/tienda/producto') }}">Administracion</a>
-            </li>
             <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->name }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="{{ url('/tienda/producto') }}">Panel de Control</a>
                 <a class="dropdown-item" href="{{url('/tienda/producto/create')}}">Agregar Articulo</a>
-                <a class="dropdown-item" href="{{url('/tienda/mensaje')}}">Mensajes (0)</a>
+                <a class="dropdown-item" href="{{url('/tienda/mensaje')}}">Mensajes (<script>document.write(cantidad)</script>)</a>
                 <a class="dropdown-item" href="{{url('/tienda/estadisticas')}}">Estadisticas</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i> Cerrar Sesión

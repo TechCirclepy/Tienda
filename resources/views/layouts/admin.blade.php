@@ -10,6 +10,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Fashion Cordillera</title>
+    <?php
+        use Tienda\Mensaje;
+        $mensajes = Mensaje::all();
+    ?>
+    <script>
+        var cantidad = 0;
+    </script>
+    @foreach($mensajes as $men) 
+        @if ($men->leido==0)
+            <script>
+                cantidad += 1;
+            </script>
+        @endif
+    @endforeach
 
     <!-- Styles -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -54,7 +68,7 @@
             </li>
             @endif
             <li class="nav-item">
-				<a class="nav-link" href="/tienda/mensaje"><i class="fa fa-envelope nav_icon"></i> Mensajes</a>
+				<a class="nav-link" href="/tienda/mensaje"><i class="fa fa-envelope nav_icon"></i> Mensajes (<script>document.write(cantidad)</script>)</a>
 			</li>
             <li class="nav-item">
               <a class="nav-link" href="/tienda/estadisticas" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i> Estadisticas</a>
