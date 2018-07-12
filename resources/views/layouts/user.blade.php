@@ -27,6 +27,7 @@
     <!-- Styles -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/alertify.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/modern-business.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -115,6 +116,8 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Funciones jquey -->
     <script src="{{ asset('js/image.js') }}"></script>
+    <script src="{{ asset('js/pinterest_grid.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
   </body>
 
 </html>

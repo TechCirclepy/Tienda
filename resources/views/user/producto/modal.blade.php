@@ -1,3 +1,4 @@
+@foreach($productos as $pro)
 <div class="modal fade" id="DetalleModal" role="dialog" id="{{$pro->pro_id}}">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -49,6 +50,7 @@
       </div>  
     </div>
   </div>
+@endforeach
 <script>
 // Muestra el detalle del producto
   $(document).on('click', '.open-modal', function() {
@@ -60,7 +62,6 @@
     if ("{{$pro->pro_ofer_active}}" == 1) {
       $('#pro-oferta').val($(this).data('pro-oferta'));
       $('#pro-precio').val($(this).data('pro-precio'));
-
     } else {
       $('#pro-precio').val($(this).data('pro-precio'));
       $('#pro-oferta').val($(this).data('pro-oferta'));

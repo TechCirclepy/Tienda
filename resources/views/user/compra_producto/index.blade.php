@@ -5,7 +5,7 @@
     $empresas = User::all();
     //funcionalidad para obtener el id de la empresa
     $url= $_SERVER["REQUEST_URI"];
-    $productoID = intval(preg_replace('/[^0-9]+/', '', $url), 10); 
+    $productoID = intval(preg_replace('/[^0-9]+/', '', $url), 10);
 ?>
 <div class="container">
     <h1 class="text-center">Realizar pedido</h1>
@@ -59,4 +59,20 @@
   var productoIDjs = '<?php echo $productoID; ?>';
   productoIDjs = document.getElementsByName("producto_pro_id")[0].value = productoIDjs;
 </script>
+<?php
+
+    if(isset($_POST['submit'])) { 
+    foreach($_POST as $campo => $valor) {
+        $_SESSION['compra'][$campo] = $valor;
+    }
+
+    echo $_SESSION['compra']['nombre'];
+    echo $_SESSION['compra']['celular'];
+    echo $_SESSION['compra']['ciudad'];
+    echo $_SESSION['compra']['mensaje'];
+
+}
+    
+
+?>
 @endsection

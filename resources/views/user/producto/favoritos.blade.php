@@ -1,9 +1,49 @@
 @extends('layouts.user')
 @section('principal')
 <!-- Container (Productos Sección) -->
-
 @include('user.producto.reportemensaje')
+{{--
+@include('user.producto.modal')
 <center><h1 style="visibility: hidden; display:none;" class="msj_fav">No cuenta con Favoritos</h1></center>
+<div class="container text">
+    <div id="products">
+        @foreach($productos as $pro)
+            @if($pro->emp_activo==1)
+                <div class="col-lg-3 col-sm-3 portfolio-item" style="visibility: hidden; display:none;" id="{{$pro->pro_id}}">
+                    <div class="products white-panel">
+                        <h3>
+                            <a href="#" class="open-modal" data-toggle="modal" data-target="#DetalleModal" 
+                            data-pro-id="{{$pro->pro_id}}" data-pro-nom="{{$pro->pro_nom}}" data-pro-info="{{$pro->pro_info}}" data-pro-foto="{{asset('imagenes/productos/'.$pro->pro_foto)}}" data-pro-empresa="{{$pro->empresa}}" data-pro-oferta="{{$pro->pro_oferta}}" data-pro-precio="{{$pro->pro_precio}}" 
+                            data-pro-active="{{$pro->pro_ofer_active}}">{{$pro->pro_nom}}</a>
+                        </h3><hr>
+                        <i onclick="changefavorite(this)" id="{{$pro->pro_id}}" class="favorite fa fa-heart" style="font-size:30px;"></i>
+                        <a href="#">
+                            <img class="card-img-top img-rounded open-modal" src="{{asset('imagenes/productos/'.$pro->pro_foto)}}"  height="200px" alt="" data-toggle="modal" data-target="#DetalleModal" 
+                            data-pro-id="{{$pro->pro_id}}" data-pro-nom="{{$pro->pro_nom}}" data-pro-info="{{$pro->pro_info}}" data-pro-foto="{{asset('imagenes/productos/'.$pro->pro_foto)}}" data-pro-empresa="{{$pro->empresa}}" data-pro-oferta="{{$pro->pro_oferta}}" data-pro-precio="{{$pro->pro_precio}}" 
+                            data-pro-active="{{$pro->pro_ofer_active}}">
+                        </a>
+                        <div class="products-info panel">
+                            <p>{{$pro->pro_info}}</p><br>
+                            <p><b>Tienda:</b> {{$pro->empresa}}<br>
+                                @if ($pro->pro_ofer_active==1)
+                                <b>Precio: </b><strike style="color: red;">{{$pro->pro_precio}}</strike> | <b>Oferta: </b>{{$pro->pro_oferta}}
+                                @else
+                                <b>Precio: </b>{{$pro->pro_precio}}
+                                @endif
+                            </p>
+                            <h3><p>
+                                <a class="report-modal" href="" title="" data-toggle="modal" data-target="#modal-reporte" data-proid="{{$pro->pro_id}}" data-proname="{{$pro->pro_nom}}" data-proempresa="{{$pro->empresa}}"><i class="fa fa-exclamation-triangle"></i>Reportar</a>
+                            </p></h3>
+                            <p>
+                                <span><a href="{{ url('/comprar',array($pro->pro_id)) }}" type="button" class="btn btn-block btn-success"><i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</a></span>
+                            </p>
+                        </div>
+                    </div>
+            @endif
+        @endforeach
+    </div>
+</div>
+--}}
 <div class="row">
     @foreach($productos as $pro)
     @if($pro->emp_activo==1)
